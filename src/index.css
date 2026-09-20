@@ -1,111 +1,107 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+ * Colour tokens
+ *
+ * Every colour in the app goes through one of the tokens below. Components
+ * write `bg-surface`, `text-text-muted`, `border-border` — never `bg-white` or
+ * a raw palette colour like `bg-slate-800`.
+ *
+ * That rule is enforced rather than documented: the reset below drops
+ * Tailwind's default colour palette, so `bg-white` and `text-slate-800` are not
+ * utilities that exist here. If a colour you wrote has no effect, you reached
+ * for a palette colour instead of a token.
+ *
+ * Adding dark mode (phase 8) means redefining the raw `--surface`-style
+ * variables under the two selectors marked below, and changing nothing else:
+ * the `@theme inline` mapping makes every utility resolve its variable at use
+ * time rather than baking the light value in.
+ * ------------------------------------------------------------------------- */
+
+@theme {
+  --color-*: initial;
+}
+
+@theme inline {
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-inherit: inherit;
+
+  /* Backgrounds, from the page up */
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+
+  /* Foregrounds */
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-on-accent: var(--text-on-accent);
+
+  /* Lines */
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  /* Interaction */
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-focus: var(--focus);
+
+  /* Status. `-soft` is the tinted background that pairs with the solid colour. */
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+
+  /* Scrim behind a dialog */
+  --color-overlay: var(--overlay);
+}
+
+/* The light theme. These raw variables are the only place a colour value is
+ * written down. */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --surface: oklch(0.985 0.004 265);
+  --surface-raised: oklch(1 0 0);
+  --surface-sunken: oklch(0.955 0.007 265);
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --text: oklch(0.26 0.02 265);
+  --text-muted: oklch(0.53 0.02 265);
+  --text-on-accent: oklch(0.99 0 0);
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --border: oklch(0.9 0.008 265);
+  --border-strong: oklch(0.79 0.012 265);
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+  --accent: oklch(0.54 0.14 248);
+  --accent-hover: oklch(0.47 0.14 248);
+  --accent-soft: oklch(0.95 0.03 248);
+  --focus: oklch(0.54 0.14 248);
+
+  --danger: oklch(0.54 0.19 26);
+  --danger-soft: oklch(0.95 0.03 26);
+  --warning: oklch(0.6 0.13 75);
+  --warning-soft: oklch(0.96 0.045 85);
+  --success: oklch(0.53 0.11 152);
+  --success-soft: oklch(0.95 0.04 152);
+
+  --overlay: oklch(0.26 0.02 265 / 0.45);
+
+  color-scheme: light;
+}
+
+/* Dark mode ships in phase 8. It redefines the same raw variables here, and
+ * touches nothing else:
+ *
+ *   @media (prefers-color-scheme: dark) {
+ *     :root:not([data-theme='light']) { --surface: ...; ... color-scheme: dark; }
+ *   }
+ *   :root[data-theme='dark'] { --surface: ...; ... color-scheme: dark; }
+ */
+
+@layer base {
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text);
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
 }
