@@ -2,9 +2,10 @@
 //
 // Most of this screen is spec section 6: local-only storage can be evicted, so
 // backing up is the one thing here that protects months of writing. Export
-// (#24), import (#25), the reminder's state (#26) and persistent storage (#23)
-// all live on this screen; Markdown export (#44) and the theme (#46) are still
-// placeholders, and each replaces its own block rather than the whole file.
+// (#24), import (#25), the reminder's state (#26), persistent storage (#23) and
+// the readable Markdown copy (#44) all live on this screen, as does the theme
+// control (#46). Each was built as its own block rather than as an edit to the
+// whole file.
 //
 // The attribution below is real and required (#28): keep it, and keep it
 // reachable from the navigation.
@@ -12,8 +13,8 @@ import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
 import { Screen } from '../../components/Screen.tsx'
-import { NotBuiltYet } from '../../components/NotBuiltYet.tsx'
 import { AttributionStatement } from '../../app/Attribution.tsx'
+import { readPreference, writePreference } from '../../backup/localPreferences.ts'
 import type {
   BackupCounts,
   BackupFile,
@@ -26,6 +27,7 @@ import {
   checkExportReminder,
   countStoredRecords,
   downloadBackup,
+  downloadMarkdownExport,
   EXPORT_REMINDER_DAYS,
   parseBackupFile,
   persistentStorageState,
@@ -39,13 +41,10 @@ export function SettingsScreen() {
     <Screen title="Settings" description="Your data, how it looks, and where the words come from.">
       <div className="flex flex-col gap-4">
         <ExportSection />
-        <NotBuiltYet ticket="#44">
-          Markdown export: a readable copy for any notes app, lossy on the structured
-          vocabulary fields.
-        </NotBuiltYet>
+        <MarkdownExportSection />
         <ImportSection />
         <PersistentStorageSection />
-        <NotBuiltYet ticket="#46">Theme: light, dark, or follow the system.</NotBuiltYet>
+        <ThemeSection />
         <AttributionStatement />
       </div>
     </Screen>
@@ -166,6 +165,62 @@ function ExportSection() {
       {failure !== undefined ? (
         <p className="mt-3 rounded-md bg-danger-soft p-3 text-sm text-text" role="alert">
           The export did not finish: {failure}
+        </p>
+      ) : null}
+    </Section>
+  )
+}
+
+// --- the readable copy (#44) ---------------------------------------------
+
+/**
+ * The other export. It sits beside the JSON one and is described in terms of
+ * what it is *for*, because the two buttons otherwise look interchangeable and
+ * they are not: only the JSON file can be restored.
+ *
+ * Downloading this does not reset the reminder above, which is the whole reason
+ * the two are worded so differently.
+ */
+function MarkdownExportSection() {
+  const [busy, setBusy] = useState(false)
+  const [failure, setFailure] = useState<string | undefined>(undefined)
+
+  async function onExport() {
+    setBusy(true)
+    setFailure(undefined)
+    try {
+      await downloadMarkdownExport()
+    } catch (error) {
+      setFailure(errorMessage(error))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  return (
+    <Section
+      title="Readable copy"
+      description="One Markdown file you can open in any notes app, on any machine, without this app: your Journal Entries by Date, your vocabulary with its Forms written out, and your Grammar Notes as they were written."
+    >
+      <div className="flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          className={secondaryButton}
+          onClick={() => void onExport()}
+          disabled={busy}
+        >
+          {busy ? 'Preparing…' : 'Download Markdown copy'}
+        </button>
+      </div>
+
+      <p className="mt-3 text-sm text-text-muted">
+        This is an escape hatch rather than a backup. It drops the structured detail an
+        import would need and cannot be restored from, so it does not count as an export.
+      </p>
+
+      {failure !== undefined ? (
+        <p className="mt-3 rounded-md bg-danger-soft p-3 text-sm text-text" role="alert">
+          The Markdown copy did not finish: {failure}
         </p>
       ) : null}
     </Section>
@@ -427,6 +482,116 @@ function PersistentStorageSection() {
           {busy ? 'Asking…' : 'Ask again'}
         </button>
       ) : null}
+    </Section>
+  )
+}
+
+// --- theme (#46) ----------------------------------------------------------
+
+const THEME_CHOICES = ['system', 'light', 'dark'] as const
+
+type ThemeChoice = (typeof THEME_CHOICES)[number]
+
+const THEME_LABELS: Readonly<Record<ThemeChoice, string>> = {
+  system: 'System',
+  light: 'Light',
+  dark: 'Dark',
+}
+
+/** Small and losable: if it is lost, the app follows the system again. */
+const THEME_PREFERENCE = 'theme'
+
+/**
+ * The two `--surface` values, for the browser chrome around the app.
+ *
+ * They are written as hex because a `theme-color` meta tag is read by the OS
+ * rather than by the stylesheet, so it cannot take a variable. They mirror
+ * `--surface` and `--dark-surface` in `src/index.css`, and the same pair is
+ * spelled out in the boot script in `index.html`.
+ */
+const SURFACE_LIGHT = '#f9fafd'
+const SURFACE_DARK = '#111419'
+
+function storedThemeChoice(): ThemeChoice {
+  const stored = readPreference(THEME_PREFERENCE)
+  return THEME_CHOICES.find((choice) => choice === stored) ?? 'system'
+}
+
+/**
+ * Apply a choice to the live document.
+ *
+ * `data-theme` is the only thing that changes: the stylesheet keys both dark
+ * selectors off it, so nothing here knows a single colour. Removing it entirely
+ * is what "System" means — the media query is then free to decide.
+ */
+function applyThemeChoice(choice: ThemeChoice): void {
+  const root = document.documentElement
+  if (choice === 'system') {
+    root.removeAttribute('data-theme')
+  } else {
+    root.dataset.theme = choice
+  }
+  const dark =
+    choice === 'dark' ||
+    (choice !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
+  document
+    .querySelector('meta[name="theme-color"]')
+    ?.setAttribute('content', dark ? SURFACE_DARK : SURFACE_LIGHT)
+}
+
+/**
+ * Light, dark, or whatever the system says.
+ *
+ * The choice is read straight into state rather than in an effect, so the
+ * control is right on its first render and there is no moment where it disagrees
+ * with the page around it. The theme itself was already applied before the first
+ * paint by the boot script in `index.html`; this only has to keep up with
+ * changes made here.
+ */
+function ThemeSection() {
+  const [choice, setChoice] = useState<ThemeChoice>(storedThemeChoice)
+
+  function onChoose(next: ThemeChoice) {
+    setChoice(next)
+    writePreference(THEME_PREFERENCE, next)
+    applyThemeChoice(next)
+  }
+
+  return (
+    <Section
+      title="Theme"
+      description="Every colour in the app comes from one set of tokens, so this swaps the values rather than restyling anything."
+    >
+      <fieldset className="flex flex-wrap gap-2">
+        <legend className="sr-only">Theme</legend>
+        {THEME_CHOICES.map((option) => (
+          <label
+            key={option}
+            className={`cursor-pointer rounded-md border px-3 py-2 text-sm font-medium ${
+              option === choice
+                ? 'border-accent bg-accent-soft text-accent'
+                : 'border-border-strong text-text hover:bg-surface-sunken'
+            }`}
+          >
+            <input
+              type="radio"
+              name="theme"
+              value={option}
+              className="sr-only"
+              checked={option === choice}
+              onChange={() => {
+                onChoose(option)
+              }}
+            />
+            {THEME_LABELS[option]}
+          </label>
+        ))}
+      </fieldset>
+      <p className="mt-3 text-sm text-text-muted">
+        {choice === 'system'
+          ? 'Following this device, and changing with it.'
+          : `Always ${THEME_LABELS[choice].toLowerCase()}, whatever this device is set to.`}
+      </p>
     </Section>
   )
 }

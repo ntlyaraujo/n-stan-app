@@ -1,0 +1,26 @@
+# The same three commands the project is built with, run on every push.
+#
+# This does not deploy. Deployment is Netlify's own Git integration, which
+# builds from `netlify.toml` and needs no credentials stored here — see
+# `docs/DEPLOY.md`. What this catches is a build that Netlify would fail on, and
+# a data-layer regression, before the phone ever sees it.
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run test

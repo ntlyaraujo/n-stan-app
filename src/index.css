@@ -90,14 +90,118 @@
   color-scheme: light;
 }
 
-/* Dark mode ships in phase 8. It redefines the same raw variables here, and
- * touches nothing else:
+/* The dark theme (#46).
  *
- *   @media (prefers-color-scheme: dark) {
- *     :root:not([data-theme='light']) { --surface: ...; ... color-scheme: dark; }
- *   }
- *   :root[data-theme='dark'] { --surface: ...; ... color-scheme: dark; }
+ * As promised above, this is a redefinition of the same raw variables and
+ * nothing else: no component, no utility and no `@theme` mapping changes,
+ * because `@theme inline` makes every utility resolve its variable at use time.
+ *
+ * It applies under two conditions — the system asks for dark and the theme
+ * control has not overridden it, or the control asked for dark outright — so
+ * the declarations below would otherwise be written out twice. The values are
+ * therefore named once here and aliased twice, keeping the rule that a colour
+ * value is written down in exactly one place.
+ *
+ * The values are not the light ones inverted. Dark surfaces need the accent and
+ * the status colours to come *up* in lightness to stay legible, which in turn
+ * flips `--text-on-accent` to a dark ink — it sits on `--accent` and `--danger`
+ * and on nothing else. Every pairing the app actually uses was checked: body
+ * and muted text on all three surfaces, each `-soft` background against both
+ * the text tokens and its own solid pair, and the two filled buttons. The
+ * weakest is `--border` on `--surface-raised` at 1.36:1, which is a divider
+ * rather than a boundary and is fractionally stronger than the light theme's
+ * own 1.35:1.
  */
+:root {
+  --dark-surface: oklch(0.19 0.012 265);
+  --dark-surface-raised: oklch(0.235 0.014 265);
+  --dark-surface-sunken: oklch(0.155 0.01 265);
+
+  --dark-text: oklch(0.94 0.008 265);
+  --dark-text-muted: oklch(0.72 0.014 265);
+  /* Dark ink: on a dark theme the accent is the light half of the pairing. */
+  --dark-text-on-accent: oklch(0.2 0.03 265);
+
+  --dark-border: oklch(0.33 0.014 265);
+  --dark-border-strong: oklch(0.5 0.018 265);
+
+  --dark-accent: oklch(0.72 0.13 248);
+  --dark-accent-hover: oklch(0.79 0.11 248);
+  --dark-accent-soft: oklch(0.29 0.06 248);
+  --dark-focus: oklch(0.72 0.13 248);
+
+  --dark-danger: oklch(0.7 0.16 26);
+  --dark-danger-soft: oklch(0.28 0.07 26);
+  --dark-warning: oklch(0.79 0.13 80);
+  --dark-warning-soft: oklch(0.3 0.06 80);
+  --dark-success: oklch(0.73 0.14 152);
+  --dark-success-soft: oklch(0.27 0.06 152);
+
+  /* Darker than the page, so a dialog still reads as lifted off it. */
+  --dark-overlay: oklch(0.09 0.01 265 / 0.66);
+}
+
+/* Follow the system, unless the theme control has pinned the app to light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --surface: var(--dark-surface);
+    --surface-raised: var(--dark-surface-raised);
+    --surface-sunken: var(--dark-surface-sunken);
+
+    --text: var(--dark-text);
+    --text-muted: var(--dark-text-muted);
+    --text-on-accent: var(--dark-text-on-accent);
+
+    --border: var(--dark-border);
+    --border-strong: var(--dark-border-strong);
+
+    --accent: var(--dark-accent);
+    --accent-hover: var(--dark-accent-hover);
+    --accent-soft: var(--dark-accent-soft);
+    --focus: var(--dark-focus);
+
+    --danger: var(--dark-danger);
+    --danger-soft: var(--dark-danger-soft);
+    --warning: var(--dark-warning);
+    --warning-soft: var(--dark-warning-soft);
+    --success: var(--dark-success);
+    --success-soft: var(--dark-success-soft);
+
+    --overlay: var(--dark-overlay);
+
+    color-scheme: dark;
+  }
+}
+
+/* Chosen outright, whatever the system says. */
+:root[data-theme='dark'] {
+  --surface: var(--dark-surface);
+  --surface-raised: var(--dark-surface-raised);
+  --surface-sunken: var(--dark-surface-sunken);
+
+  --text: var(--dark-text);
+  --text-muted: var(--dark-text-muted);
+  --text-on-accent: var(--dark-text-on-accent);
+
+  --border: var(--dark-border);
+  --border-strong: var(--dark-border-strong);
+
+  --accent: var(--dark-accent);
+  --accent-hover: var(--dark-accent-hover);
+  --accent-soft: var(--dark-accent-soft);
+  --focus: var(--dark-focus);
+
+  --danger: var(--dark-danger);
+  --danger-soft: var(--dark-danger-soft);
+  --warning: var(--dark-warning);
+  --warning-soft: var(--dark-warning-soft);
+  --success: var(--dark-success);
+  --success-soft: var(--dark-success-soft);
+
+  --overlay: var(--dark-overlay);
+
+  color-scheme: dark;
+}
 
 @layer base {
   body {
