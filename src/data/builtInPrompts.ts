@@ -13,26 +13,27 @@
  * Every Prompt is a suggestion, never an assignment, and every one invites the writer to
  * say something true about their own life rather than to drill a form.
  *
- * NOTE ON TYPES: the shared domain types are being defined on a parallel branch, so the
- * types below are a deliberately minimal *local* placeholder carrying only what spec 3.4
- * requires (text, level, origin) plus a stable id. A later ticket reconciles them with the
- * shared domain `Prompt` type; the data below should survive that unchanged.
+ * The shared domain type lives in `src/domain/prompt.ts`. A stored Prompt is an entity
+ * with timestamps and, for a Built-in Prompt, a `hidden` flag; none of that belongs in
+ * shipped data, so what this file holds is the *seed*: the id, text and level that ship
+ * with the app. `seedBuiltInPrompts` in `promptRepository.ts` turns a seed into a stored
+ * Built-in Prompt and, on a later revision of this set, carries your `hidden` choices
+ * forward.
  */
 
-export type PromptLevel = 'beginner' | 'intermediate' | 'advanced'
+import type { PromptLevel } from '../domain/prompt.ts'
 
-export type PromptOrigin = 'built-in' | 'custom'
-
-export interface Prompt {
-  /** Stable across app versions: it is what an attached Prompt is stored by. */
-  id: string
+/** What ships with the app. The stored Built-in Prompt is built from it. */
+export interface BuiltInPromptSeed {
+  /** Stable across app versions: it is what an Attached Prompt is stored by. */
+  readonly id: string
   /** The Prompt itself, in Swedish. */
-  text: string
-  level: PromptLevel
-  origin: PromptOrigin
+  readonly text: string
+  readonly level: PromptLevel
+  readonly origin: 'built-in'
 }
 
-export const builtInPrompts: Prompt[] = [
+export const builtInPrompts: readonly BuiltInPromptSeed[] = [
   // Beginner — present tense, everyday words, short sentences.
   {
     id: 'builtin-beginner-01',

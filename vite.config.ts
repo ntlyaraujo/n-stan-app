@@ -15,5 +15,8 @@ export default defineConfig({
     // Component tests are deliberately out of scope (spec section 7).
     environment: 'node',
     include: ['src/**/*.test.ts'],
+    // An in-memory IndexedDB, so the storage tests run against the real API
+    // surface — transactions, indexes and upgrades included — under node.
+    setupFiles: ['fake-indexeddb/auto'],
   },
 })
