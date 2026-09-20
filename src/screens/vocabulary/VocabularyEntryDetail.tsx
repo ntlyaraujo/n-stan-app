@@ -6,22 +6,28 @@
 // when it is opened with a connection, and the result is written through.
 // `shouldAttemptLookup` decides that; completeness never does.
 //
-// Two later tickets extend this screen and neither is here yet:
-//   * #33 — Backlinks from the Grammar Notes that Reference this word
-//   * #43 — the Journal Entries that Pinned it
-// Both belong in the marked section near the bottom, and both are reads against
-// `links.ts` (`backlinksForVocabularyEntry`, `journalEntriesPinning`). Nothing
-// above that section needs to change to add them.
+// Two later tickets extend this screen. #33 — the Backlinks from the Grammar
+// Notes that Reference this word — has landed, in the marked section near the
+// bottom. #43, the Journal Entries that Pinned it, goes in beside it and is the
+// matching read against `links.ts` (`journalEntriesPinning`). Nothing above that
+// section needs to change to add it.
 
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
 
 import { Screen } from '../../components/Screen.tsx'
-import { deleteVocabularyEntry, getVocabularyEntry } from '../../data/index.ts'
+import type { DeletionImpact } from '../../data/index.ts'
+import {
+  deleteVocabularyEntry,
+  deletionImpactForVocabularyEntry,
+  getVocabularyEntry,
+} from '../../data/index.ts'
 import type { VocabularyEntry } from '../../domain/index.ts'
 import { shouldAttemptLookup } from '../../domain/index.ts'
 import type { DictionaryLookup } from '../../dictionary/index.ts'
 import { supportsLookup } from '../../dictionary/index.ts'
+import { DeletionWarning } from '../grammar/DeletionWarning.tsx'
+import { VocabularyBacklinks } from '../grammar/VocabularyBacklinks.tsx'
 import { autoFillOnOpen, isOnline, LOOKUP_OUTCOME_LABELS } from './autoFill.ts'
 import { Badge, GenderBadge, Notice, ParadigmBadge, PartOfSpeechBadge, TagList } from './badges.tsx'
 import {
@@ -91,6 +97,8 @@ export function VocabularyEntryDetail() {
   const [lookup, setLookup] = useState<DictionaryLookup | null>(null)
   const [filling, setFilling] = useState(false)
   const [confirmingDelete, setConfirmingDelete] = useState(false)
+  const [impact, setImpact] = useState<DeletionImpact | null>(null)
+  const [deletingNow, setDeletingNow] = useState(false)
 
   useEffect(() => {
     if (vocabularyEntryId === undefined) return
@@ -133,10 +141,25 @@ export function VocabularyEntryDetail() {
     setLookup(result.lookup)
   }
 
+  // #34: what the delete costs is read when the warning opens, so the warning
+  // and the delete that follows can never disagree — both come from `links.ts`.
+  useEffect(() => {
+    if (!confirmingDelete || entry === null) return
+    let cancelled = false
+    void (async () => {
+      const found = await deletionImpactForVocabularyEntry(entry.id)
+      if (!cancelled) setImpact(found)
+    })()
+    return () => {
+      cancelled = true
+    }
+  }, [confirmingDelete, entry])
+
   const remove = async () => {
     if (entry === null) return
+    setDeletingNow(true)
     await deleteVocabularyEntry(entry.id)
-    void navigate('/vocabulary')
+    void navigate('/vocabulary', { replace: true })
   }
 
   if (state === 'loading' && entry === null) {
@@ -268,8 +291,10 @@ export function VocabularyEntryDetail() {
           </div>
         ) : null}
 
-        {/* #33 (Backlinks from Grammar Notes) and #43 (the Journal Entries that
-            used this word) render here. */}
+        {/* #33 — the Grammar Notes that Reference this word, derived on read and
+            never stored. #43 (the Journal Entries that Pinned it) renders below
+            it, in this same section. */}
+        <VocabularyBacklinks vocabularyEntryId={entry.id} />
 
         <div className="flex flex-wrap items-center gap-2">
           <Link to={`/vocabulary/${entry.id}/edit`} className={PRIMARY_BUTTON}>
@@ -291,40 +316,20 @@ export function VocabularyEntryDetail() {
           )}
         </div>
 
-        {/* #34 replaces this with the report of what loses its link: deleting
-            never cascades, so a Grammar Note loses the Reference and a Journal
-            Entry keeps a Tombstone. `deletionImpactForVocabularyEntry` already
-            returns exactly that. */}
         {confirmingDelete ? (
-          <Notice
-            tone="danger"
-            title={`Delete ${entry.lemma}?`}
-            actions={
-              <>
-                <button
-                  type="button"
-                  className={DANGER_BUTTON}
-                  onClick={() => {
-                    void remove()
-                  }}
-                >
-                  Delete it
-                </button>
-                <button
-                  type="button"
-                  className={SECONDARY_BUTTON}
-                  onClick={() => {
-                    setConfirmingDelete(false)
-                  }}
-                >
-                  Keep it
-                </button>
-              </>
-            }
-          >
-            Anything that pointed at this word keeps what it recorded: a Journal Entry keeps
-            the Lemma as text, and a Grammar Note simply loses the Reference.
-          </Notice>
+          <DeletionWarning
+            deleting="vocabularyEntry"
+            name={entry.lemma}
+            impact={impact}
+            deletingNow={deletingNow}
+            onConfirm={() => {
+              void remove()
+            }}
+            onCancel={() => {
+              setConfirmingDelete(false)
+              setImpact(null)
+            }}
+          />
         ) : null}
       </div>
     </Screen>
