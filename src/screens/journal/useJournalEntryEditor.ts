@@ -24,7 +24,11 @@ import {
 } from '../../data/index.ts'
 import type { CalendarDate, Id, JournalEntry, Tag } from '../../domain/index.ts'
 
-/** The parts of a Journal Entry the editor owns. Pins are #40–#42. */
+/**
+ * The parts of a Journal Entry the editor owns. Pins are not among them: they
+ * are written by `links.ts`, which captures the Lemma a Pin was made with, and
+ * reach the editor only through {@link JournalEntryEditor.writeToEntry}.
+ */
 export interface JournalEntryFields {
   readonly date: CalendarDate
   readonly body: string
@@ -43,6 +47,24 @@ export interface JournalEntryEditor {
   readonly update: (changes: Partial<JournalEntryFields>) => void
   readonly saveNow: () => Promise<void>
   readonly remove: () => Promise<void>
+  /**
+   * Make a write against this entry that the editor does not own — Pinning and
+   * unpinning (#41) — and take back the entry it returns.
+   *
+   * It goes through the editor rather than around it for two reasons. It runs on
+   * the same queue as the autosave, so a Pin and a keystroke landing together
+   * cannot overwrite each other; and the entry it returns replaces the one the
+   * editor is holding, so the next autosave writes the Pins it now has instead
+   * of the ones it loaded with.
+   *
+   * There is no entry to Pin to on `/journal/new`, so this creates one first. A
+   * Pin is a record of what you practiced and is worth an entry on its own —
+   * which is why it, unlike an untouched Date, is enough to bring one into being.
+   * Resolves to undefined only if the entry could not be created.
+   */
+  readonly writeToEntry: (
+    write: (journalEntryId: Id) => Promise<JournalEntry>,
+  ) => Promise<JournalEntry | undefined>
 }
 
 const AUTOSAVE_DELAY_MS = 600
@@ -137,13 +159,17 @@ export function useJournalEntryEditor(): JournalEntryEditor {
     }
   }, [journalEntryId, adopt])
 
-  const persist = useCallback(async () => {
+  const persist = useCallback(async (options?: { createEvenIfBlank?: boolean }) => {
     if (removedRef.current) return
     const snapshot = fieldsRef.current
-    if (sameFields(snapshot, savedFieldsRef.current)) return
-
     const current = entryRef.current
-    if (current === undefined && isBlank(snapshot)) {
+    // A Pin needs an entry to belong to, so it may ask for one before there is
+    // anything written. Nothing else creates an entry out of a blank draft.
+    const mustCreate = options?.createEvenIfBlank === true && current === undefined
+
+    if (!mustCreate && sameFields(snapshot, savedFieldsRef.current)) return
+
+    if (!mustCreate && current === undefined && isBlank(snapshot)) {
       // Nothing to keep yet; remember it so an empty Date change stays quiet.
       savedFieldsRef.current = snapshot
       setSaveState('clean')
@@ -201,6 +227,34 @@ export function useJournalEntryEditor(): JournalEntryEditor {
     return queueRef.current
   }, [])
 
+  // Pins are written by `links.ts`, not from here, but they land on the same
+  // record — so they go through the same queue, and what comes back replaces the
+  // entry this hook holds. Skip either half and the next autosave would write
+  // back the Pins the editor loaded with, quietly undoing the one just made.
+  const writeToEntry = useCallback(
+    (write: (journalEntryId: Id) => Promise<JournalEntry>): Promise<JournalEntry | undefined> => {
+      const run = async (): Promise<JournalEntry | undefined> => {
+        if (removedRef.current) return undefined
+        await persistRef.current({ createEvenIfBlank: true })
+        const target = entryRef.current
+        if (target === undefined) return undefined
+        try {
+          const saved = await write(target.id)
+          entryRef.current = saved
+          setEntry(saved)
+          return saved
+        } catch (error) {
+          console.error('Writing to the Journal Entry failed:', error)
+          return undefined
+        }
+      }
+      const result = queueRef.current.then(run, run)
+      queueRef.current = result.then(() => undefined)
+      return result
+    },
+    [],
+  )
+
   // Autosave while you type: the timer restarts on each keystroke and fires once
   // the typing pauses.
   useEffect(() => {
@@ -237,5 +291,5 @@ export function useJournalEntryEditor(): JournalEntryEditor {
     navigate('/journal', { replace: true })
   }, [navigate])
 
-  return { status, fields, saveState, entry, update, saveNow: flush, remove }
+  return { status, fields, saveState, entry, update, saveNow: flush, remove, writeToEntry }
 }

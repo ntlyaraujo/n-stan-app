@@ -6,11 +6,11 @@
 // when it is opened with a connection, and the result is written through.
 // `shouldAttemptLookup` decides that; completeness never does.
 //
-// Two later tickets extend this screen. #33 — the Backlinks from the Grammar
-// Notes that Reference this word — has landed, in the marked section near the
-// bottom. #43, the Journal Entries that Pinned it, goes in beside it and is the
+// Two later tickets extend this screen, and both have landed, in the marked
+// section near the bottom: #33, the Backlinks from the Grammar Notes that
+// Reference this word, and #43, the Journal Entries that Pinned it — the
 // matching read against `links.ts` (`journalEntriesPinning`). Nothing above that
-// section needs to change to add it.
+// section knows about either.
 
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
@@ -28,6 +28,7 @@ import type { DictionaryLookup } from '../../dictionary/index.ts'
 import { supportsLookup } from '../../dictionary/index.ts'
 import { DeletionWarning } from '../grammar/DeletionWarning.tsx'
 import { VocabularyBacklinks } from '../grammar/VocabularyBacklinks.tsx'
+import { PinnedInJournalEntries } from '../journal/PinnedInJournalEntries.tsx'
 import { autoFillOnOpen, isOnline, LOOKUP_OUTCOME_LABELS } from './autoFill.ts'
 import { Badge, GenderBadge, Notice, ParadigmBadge, PartOfSpeechBadge, TagList } from './badges.tsx'
 import {
@@ -292,9 +293,12 @@ export function VocabularyEntryDetail() {
         ) : null}
 
         {/* #33 — the Grammar Notes that Reference this word, derived on read and
-            never stored. #43 (the Journal Entries that Pinned it) renders below
-            it, in this same section. */}
+            never stored — and, below it, #43: the Journal Entries that Pinned
+            it. Together they close the loop the app is built around: capture,
+            use in writing, review through what the word connects to. Each
+            renders nothing when it has nothing to say. */}
         <VocabularyBacklinks vocabularyEntryId={entry.id} />
+        <PinnedInJournalEntries vocabularyEntryId={entry.id} />
 
         <div className="flex flex-wrap items-center gap-2">
           <Link to={`/vocabulary/${entry.id}/edit`} className={PRIMARY_BUTTON}>
