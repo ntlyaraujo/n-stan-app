@@ -1,0 +1,67 @@
+{
+  "total": 1,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY97REWNP8RMNEX31ZYVFZ",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind aktiv",
+            "writtenForm": "vet"
+          },
+          {
+            "msd": "pres konj aktiv",
+            "writtenForm": "vete"
+          },
+          {
+            "msd": "pret ind aktiv",
+            "writtenForm": "visste"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "vet"
+          },
+          {
+            "msd": "inf aktiv",
+            "writtenForm": "veta"
+          },
+          {
+            "msd": "sup aktiv",
+            "writtenForm": "vetat"
+          },
+          {
+            "msd": "pres_part nom",
+            "writtenForm": "vetande"
+          },
+          {
+            "msd": "pres_part gen",
+            "writtenForm": "vetandes"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "vet"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "vet-"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "vet-"
+          }
+        ],
+        "baseform": "veta",
+        "lemgram": "veta..vb.1",
+        "paradigm": "vb_om_veta",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026090.766221,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 1
+  }
+}

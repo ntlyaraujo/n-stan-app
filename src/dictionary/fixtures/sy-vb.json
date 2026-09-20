@@ -1,0 +1,127 @@
+{
+  "total": 1,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY9496B4VD6HNJTGA929V8",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind aktiv",
+            "writtenForm": "syr"
+          },
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "sys"
+          },
+          {
+            "msd": "pret ind aktiv",
+            "writtenForm": "sydde"
+          },
+          {
+            "msd": "pret ind s-form",
+            "writtenForm": "syddes"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "sy"
+          },
+          {
+            "msd": "inf aktiv",
+            "writtenForm": "sy"
+          },
+          {
+            "msd": "inf s-form",
+            "writtenForm": "sys"
+          },
+          {
+            "msd": "sup aktiv",
+            "writtenForm": "sytt"
+          },
+          {
+            "msd": "sup s-form",
+            "writtenForm": "sytts"
+          },
+          {
+            "msd": "pres_part nom",
+            "writtenForm": "syende"
+          },
+          {
+            "msd": "pres_part gen",
+            "writtenForm": "syendes"
+          },
+          {
+            "msd": "pret_part indef sg u nom",
+            "writtenForm": "sydd"
+          },
+          {
+            "msd": "pret_part indef sg u gen",
+            "writtenForm": "sydds"
+          },
+          {
+            "msd": "pret_part indef sg n nom",
+            "writtenForm": "sytt"
+          },
+          {
+            "msd": "pret_part indef sg n gen",
+            "writtenForm": "sytts"
+          },
+          {
+            "msd": "pret_part indef pl nom",
+            "writtenForm": "sydda"
+          },
+          {
+            "msd": "pret_part indef pl gen",
+            "writtenForm": "syddas"
+          },
+          {
+            "msd": "pret_part def sg no_masc nom",
+            "writtenForm": "sydda"
+          },
+          {
+            "msd": "pret_part def sg no_masc gen",
+            "writtenForm": "syddas"
+          },
+          {
+            "msd": "pret_part def sg masc nom",
+            "writtenForm": "sydde"
+          },
+          {
+            "msd": "pret_part def sg masc gen",
+            "writtenForm": "syddes"
+          },
+          {
+            "msd": "pret_part def pl nom",
+            "writtenForm": "sydda"
+          },
+          {
+            "msd": "pret_part def pl gen",
+            "writtenForm": "syddas"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "sy"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "sy-"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "sy-"
+          }
+        ],
+        "baseform": "sy",
+        "lemgram": "sy..vb.1",
+        "paradigm": "vb_3a_sy",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.206675,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 1
+  }
+}

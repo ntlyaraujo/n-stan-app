@@ -1,0 +1,1241 @@
+{
+  "total": 16,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY94NV0ABHCFPX1YPR7ZFM",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar f\u00f6r d\u00f6va \u00f6ron"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas f\u00f6r d\u00f6va \u00f6ron"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade f\u00f6r d\u00f6va \u00f6ron"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades f\u00f6r d\u00f6va \u00f6ron"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala f\u00f6r d\u00f6va \u00f6ron"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala f\u00f6r d\u00f6va \u00f6ron"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas f\u00f6r d\u00f6va \u00f6ron"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat f\u00f6r d\u00f6va \u00f6ron"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats f\u00f6r d\u00f6va \u00f6ron"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande f\u00f6r d\u00f6va \u00f6ron"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes f\u00f6r d\u00f6va \u00f6ron"
+          }
+        ],
+        "baseform": "tala f\u00f6r d\u00f6va \u00f6ron",
+        "lemgram": "tala_f\u00f6r_d\u00f6va_\u00f6ron..vbm.1",
+        "paradigm": "vbm_1mt1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.611805,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94NV2XNDC0NY4P6GRYG3",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar f\u00f6r sig sj\u00e4lv"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas f\u00f6r sig sj\u00e4lv"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade f\u00f6r sig sj\u00e4lv"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades f\u00f6r sig sj\u00e4lv"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala f\u00f6r sig sj\u00e4lv"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala f\u00f6r sig sj\u00e4lv"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas f\u00f6r sig sj\u00e4lv"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat f\u00f6r sig sj\u00e4lv"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats f\u00f6r sig sj\u00e4lv"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande f\u00f6r sig sj\u00e4lv"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes f\u00f6r sig sj\u00e4lv"
+          }
+        ],
+        "baseform": "tala f\u00f6r sig sj\u00e4lv",
+        "lemgram": "tala_f\u00f6r_sig_sj\u00e4lv..vbm.1",
+        "paradigm": "vbm_1mvsl1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.612012,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94NW92QP5XBRHFYBW16E",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar gott"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas gott"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade gott"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades gott"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala gott"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala gott"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas gott"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat gott"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats gott"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande gott"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes gott"
+          }
+        ],
+        "baseform": "tala gott",
+        "lemgram": "tala_gott..vbm.1",
+        "paradigm": "vbm_1ml1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.612509,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94NW78B5HMSQ1KDW1SV8",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar i egen sak"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas i egen sak"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade i egen sak"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades i egen sak"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala i egen sak"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala i egen sak"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas i egen sak"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat i egen sak"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats i egen sak"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande i egen sak"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes i egen sak"
+          }
+        ],
+        "baseform": "tala i egen sak",
+        "lemgram": "tala_i_egen_sak..vbm.1",
+        "paradigm": "vbm_1mt1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.612709,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94NWJN9TDH1GHKZHYAK9",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar i g\u00e5tor"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas i g\u00e5tor"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade i g\u00e5tor"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades i g\u00e5tor"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala i g\u00e5tor"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala i g\u00e5tor"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas i g\u00e5tor"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat i g\u00e5tor"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats i g\u00e5tor"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande i g\u00e5tor"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes i g\u00e5tor"
+          }
+        ],
+        "baseform": "tala i g\u00e5tor",
+        "lemgram": "tala_i_g\u00e5tor..vbm.1",
+        "paradigm": "vbm_1md1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.612945,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94NXT7BZWW0S441603EB",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar i tungor"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas i tungor"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade i tungor"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades i tungor"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala i tungor"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala i tungor"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas i tungor"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat i tungor"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats i tungor"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande i tungor"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes i tungor"
+          }
+        ],
+        "baseform": "tala i tungor",
+        "lemgram": "tala_i_tungor..vbm.1",
+        "paradigm": "vbm_1md1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.613379,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94NXX7D3HP273VSHETCB",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar illa"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas illa"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade illa"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades illa"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala illa"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala illa"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas illa"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat illa"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats illa"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande illa"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes illa"
+          }
+        ],
+        "baseform": "tala illa",
+        "lemgram": "tala_illa..vbm.1",
+        "paradigm": "vbm_1ml1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.613141,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94NXKZFYQ3WG2EVA6JKC",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar med kluven tunga"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas med kluven tunga"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade med kluven tunga"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades med kluven tunga"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala med kluven tunga"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala med kluven tunga"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas med kluven tunga"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat med kluven tunga"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats med kluven tunga"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande med kluven tunga"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes med kluven tunga"
+          }
+        ],
+        "baseform": "tala med kluven tunga",
+        "lemgram": "tala_med_kluven_tunga..vbm.1",
+        "paradigm": "vbm_1mt1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.613859,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94P0G8ZWFBMP60WDT913",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar om"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas om"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade om"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades om"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala om"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala om"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas om"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat om"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats om"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande om"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes om"
+          }
+        ],
+        "baseform": "tala om",
+        "lemgram": "tala_om..vbm.1",
+        "paradigm": "vbm_1mp1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.616668,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94P0FGNRP0E2XHDJAE87",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar ont"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas ont"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade ont"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades ont"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala ont"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala ont"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas ont"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat ont"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats ont"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande ont"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes ont"
+          }
+        ],
+        "baseform": "tala ont",
+        "lemgram": "tala_ont..vbm.1",
+        "paradigm": "vbm_1ml1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.616889,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94P171BMJ9XWV3S7V6ZK",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar osanning"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas osanning"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade osanning"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades osanning"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala osanning"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala osanning"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas osanning"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat osanning"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats osanning"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande osanning"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes osanning"
+          }
+        ],
+        "baseform": "tala osanning",
+        "lemgram": "tala_osanning..vbm.1",
+        "paradigm": "vbm_1ml1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.617106,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94P295B821Y5Q3VE6RS3",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar sanning"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas sanning"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade sanning"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades sanning"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala sanning"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala sanning"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas sanning"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat sanning"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats sanning"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande sanning"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes sanning"
+          }
+        ],
+        "baseform": "tala sanning",
+        "lemgram": "tala_sanning..vbm.1",
+        "paradigm": "vbm_1ml1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.618699,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94P2XZ0S6BA3TTY8FN23",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar till punkt"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas till punkt"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade till punkt"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades till punkt"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala till punkt"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala till punkt"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas till punkt"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat till punkt"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats till punkt"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande till punkt"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes till punkt"
+          }
+        ],
+        "baseform": "tala till punkt",
+        "lemgram": "tala_till_punkt..vbm.1",
+        "paradigm": "vbm_1md1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.619037,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94P3M9W0CP9VBYBS8VJW",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar ur sk\u00e4gget"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas ur sk\u00e4gget"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade ur sk\u00e4gget"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades ur sk\u00e4gget"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala ur sk\u00e4gget"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala ur sk\u00e4gget"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas ur sk\u00e4gget"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat ur sk\u00e4gget"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats ur sk\u00e4gget"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande ur sk\u00e4gget"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes ur sk\u00e4gget"
+          }
+        ],
+        "baseform": "tala ur sk\u00e4gget",
+        "lemgram": "tala_ur_sk\u00e4gget..vbm.1",
+        "paradigm": "vbm_1md1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.61926,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94P33G6JMSZMPS0BJAPM",
+      "entry": {
+        "inflectionTable": [
+          {
+            "index": "1",
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar v\u00e4l"
+          },
+          {
+            "index": "1",
+            "msd": "pres ind s-form",
+            "writtenForm": "talas v\u00e4l"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade v\u00e4l"
+          },
+          {
+            "index": "1",
+            "msd": "pret ind s-form",
+            "writtenForm": "talades v\u00e4l"
+          },
+          {
+            "index": "1",
+            "msd": "imper",
+            "writtenForm": "tala v\u00e4l"
+          },
+          {
+            "index": "1",
+            "msd": "inf aktiv",
+            "writtenForm": "tala v\u00e4l"
+          },
+          {
+            "index": "1",
+            "msd": "inf s-form",
+            "writtenForm": "talas v\u00e4l"
+          },
+          {
+            "index": "1",
+            "msd": "sup aktiv",
+            "writtenForm": "talat v\u00e4l"
+          },
+          {
+            "index": "1",
+            "msd": "sup s-form",
+            "writtenForm": "talats v\u00e4l"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part nom",
+            "writtenForm": "talande v\u00e4l"
+          },
+          {
+            "index": "1",
+            "msd": "pres_part gen",
+            "writtenForm": "talandes v\u00e4l"
+          }
+        ],
+        "baseform": "tala v\u00e4l",
+        "lemgram": "tala_v\u00e4l..vbm.1",
+        "paradigm": "vbm_1ml1_laga",
+        "partOfSpeech": "vbm"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.619489,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY94NV58C9HNKRXEQX5CMQ",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar"
+          },
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "talas"
+          },
+          {
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade"
+          },
+          {
+            "msd": "pret ind aktiv",
+            "writtenForm": "talte"
+          },
+          {
+            "msd": "pret ind s-form",
+            "writtenForm": "talades"
+          },
+          {
+            "msd": "pret ind s-form",
+            "writtenForm": "taltes"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "tala"
+          },
+          {
+            "msd": "inf aktiv",
+            "writtenForm": "tala"
+          },
+          {
+            "msd": "inf s-form",
+            "writtenForm": "talas"
+          },
+          {
+            "msd": "sup aktiv",
+            "writtenForm": "talat"
+          },
+          {
+            "msd": "sup aktiv",
+            "writtenForm": "talt"
+          },
+          {
+            "msd": "sup s-form",
+            "writtenForm": "talats"
+          },
+          {
+            "msd": "sup s-form",
+            "writtenForm": "talts"
+          },
+          {
+            "msd": "pres_part nom",
+            "writtenForm": "talande"
+          },
+          {
+            "msd": "pres_part gen",
+            "writtenForm": "talandes"
+          },
+          {
+            "msd": "pret_part indef sg u nom",
+            "writtenForm": "talad"
+          },
+          {
+            "msd": "pret_part indef sg u nom",
+            "writtenForm": "tald"
+          },
+          {
+            "msd": "pret_part indef sg u gen",
+            "writtenForm": "talads"
+          },
+          {
+            "msd": "pret_part indef sg u gen",
+            "writtenForm": "talds"
+          },
+          {
+            "msd": "pret_part indef sg n nom",
+            "writtenForm": "talat"
+          },
+          {
+            "msd": "pret_part indef sg n nom",
+            "writtenForm": "talt"
+          },
+          {
+            "msd": "pret_part indef sg n gen",
+            "writtenForm": "talats"
+          },
+          {
+            "msd": "pret_part indef sg n gen",
+            "writtenForm": "talts"
+          },
+          {
+            "msd": "pret_part indef pl nom",
+            "writtenForm": "talade"
+          },
+          {
+            "msd": "pret_part indef pl nom",
+            "writtenForm": "talda"
+          },
+          {
+            "msd": "pret_part indef pl gen",
+            "writtenForm": "talades"
+          },
+          {
+            "msd": "pret_part indef pl gen",
+            "writtenForm": "taldas"
+          },
+          {
+            "msd": "pret_part def sg no_masc nom",
+            "writtenForm": "talade"
+          },
+          {
+            "msd": "pret_part def sg no_masc nom",
+            "writtenForm": "talda"
+          },
+          {
+            "msd": "pret_part def sg no_masc gen",
+            "writtenForm": "talades"
+          },
+          {
+            "msd": "pret_part def sg no_masc gen",
+            "writtenForm": "taldas"
+          },
+          {
+            "msd": "pret_part def sg masc nom",
+            "writtenForm": "talade"
+          },
+          {
+            "msd": "pret_part def sg masc nom",
+            "writtenForm": "talde"
+          },
+          {
+            "msd": "pret_part def sg masc gen",
+            "writtenForm": "talades"
+          },
+          {
+            "msd": "pret_part def sg masc gen",
+            "writtenForm": "taldes"
+          },
+          {
+            "msd": "pret_part def pl nom",
+            "writtenForm": "talade"
+          },
+          {
+            "msd": "pret_part def pl nom",
+            "writtenForm": "talda"
+          },
+          {
+            "msd": "pret_part def pl gen",
+            "writtenForm": "talades"
+          },
+          {
+            "msd": "pret_part def pl gen",
+            "writtenForm": "taldas"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "tal"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "tal-"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "tal-"
+          }
+        ],
+        "baseform": "tala",
+        "lemgram": "tala..vb.1",
+        "paradigm": "vb_va_tala",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.611602,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 16
+  }
+}

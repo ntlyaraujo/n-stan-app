@@ -1,0 +1,42 @@
+{
+  "total": 1,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY873DFZZP2KEWT8FBMY2W",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pl indef nom",
+            "writtenForm": "abstinensbesv\u00e4r"
+          },
+          {
+            "msd": "pl indef gen",
+            "writtenForm": "abstinensbesv\u00e4rs"
+          },
+          {
+            "msd": "pl def nom",
+            "writtenForm": "abstinensbesv\u00e4ren"
+          },
+          {
+            "msd": "pl def gen",
+            "writtenForm": "abstinensbesv\u00e4rens"
+          }
+        ],
+        "baseform": "abstinensbesv\u00e4r",
+        "inherent": [
+          "p"
+        ],
+        "lemgram": "abstinensbesv\u00e4r..nn.1",
+        "paradigm": "nn_np_ordalag",
+        "partOfSpeech": "nn"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026057.325861,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 1
+  }
+}
