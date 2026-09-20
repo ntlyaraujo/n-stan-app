@@ -1,0 +1,51 @@
+{
+  "total": 1,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY915CEZHVNDKB7E8NTGBJ",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "sk\u00e4ms"
+          },
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "sk\u00e4mmas"
+          },
+          {
+            "msd": "pret ind s-form",
+            "writtenForm": "sk\u00e4mmdes"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "sk\u00e4ms"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "sk\u00e4mmas"
+          },
+          {
+            "msd": "inf s-form",
+            "writtenForm": "sk\u00e4mmas"
+          },
+          {
+            "msd": "sup s-form",
+            "writtenForm": "sk\u00e4mmts"
+          }
+        ],
+        "baseform": "sk\u00e4mmas",
+        "lemgram": "sk\u00e4mmas..vb.1",
+        "paradigm": "vb_2s_trivas",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026084.012138,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 1
+  }
+}

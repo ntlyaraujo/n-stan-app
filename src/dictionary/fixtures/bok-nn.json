@@ -1,0 +1,164 @@
+{
+  "total": 2,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY8A1EXEH1DQ8W4P81WME2",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "sg indef nom",
+            "writtenForm": "bok"
+          },
+          {
+            "msd": "sg indef gen",
+            "writtenForm": "boks"
+          },
+          {
+            "msd": "sg def nom",
+            "writtenForm": "boken"
+          },
+          {
+            "msd": "sg def gen",
+            "writtenForm": "bokens"
+          },
+          {
+            "msd": "pl indef nom",
+            "writtenForm": "b\u00f6cker"
+          },
+          {
+            "msd": "pl indef gen",
+            "writtenForm": "b\u00f6ckers"
+          },
+          {
+            "msd": "pl def nom",
+            "writtenForm": "b\u00f6ckerna"
+          },
+          {
+            "msd": "pl def gen",
+            "writtenForm": "b\u00f6ckernas"
+          },
+          {
+            "msd": "ci",
+            "writtenForm": "bok-"
+          },
+          {
+            "msd": "ci",
+            "writtenForm": "bok"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "boks-"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "bok-"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "boks"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "bok"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "bok-"
+          }
+        ],
+        "baseform": "bok",
+        "inherent": [
+          "u"
+        ],
+        "lemgram": "bok..nn.1",
+        "paradigm": "nn_3u_bok",
+        "partOfSpeech": "nn"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026060.334737,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY8A1EJP8T6K7BEJ7HA1JW",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "sg indef nom",
+            "writtenForm": "bok"
+          },
+          {
+            "msd": "sg indef gen",
+            "writtenForm": "boks"
+          },
+          {
+            "msd": "sg def nom",
+            "writtenForm": "boken"
+          },
+          {
+            "msd": "sg def gen",
+            "writtenForm": "bokens"
+          },
+          {
+            "msd": "pl indef nom",
+            "writtenForm": "bokar"
+          },
+          {
+            "msd": "pl indef gen",
+            "writtenForm": "bokars"
+          },
+          {
+            "msd": "pl def nom",
+            "writtenForm": "bokarna"
+          },
+          {
+            "msd": "pl def gen",
+            "writtenForm": "bokarnas"
+          },
+          {
+            "msd": "ci",
+            "writtenForm": "bok-"
+          },
+          {
+            "msd": "ci",
+            "writtenForm": "bok"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "bok-"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "boks-"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "bok"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "boks"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "bok-"
+          }
+        ],
+        "baseform": "bok",
+        "inherent": [
+          "u"
+        ],
+        "lemgram": "bok..nn.2",
+        "paradigm": "nn_2u_sten",
+        "partOfSpeech": "nn"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026060.334935,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 2
+  }
+}

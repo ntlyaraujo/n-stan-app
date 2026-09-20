@@ -1,0 +1,43 @@
+{
+  "total": 1,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY87JARMFTK5EDKF6KMGAW",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "andas"
+          },
+          {
+            "msd": "pret ind s-form",
+            "writtenForm": "andades"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "andas"
+          },
+          {
+            "msd": "inf s-form",
+            "writtenForm": "andas"
+          },
+          {
+            "msd": "sup s-form",
+            "writtenForm": "andats"
+          }
+        ],
+        "baseform": "andas",
+        "lemgram": "andas..vb.1",
+        "paradigm": "vb_1s_andas",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026057.802043,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 1
+  }
+}

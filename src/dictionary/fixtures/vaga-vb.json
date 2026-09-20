@@ -1,0 +1,305 @@
+{
+  "total": 3,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY989QMESBF8N486C90JDJ",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind aktiv",
+            "writtenForm": "v\u00e4ger"
+          },
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "v\u00e4ges"
+          },
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "v\u00e4gs"
+          },
+          {
+            "msd": "pret ind aktiv",
+            "writtenForm": "v\u00e4gde"
+          },
+          {
+            "msd": "pret ind s-form",
+            "writtenForm": "v\u00e4gdes"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "v\u00e4g"
+          },
+          {
+            "msd": "inf aktiv",
+            "writtenForm": "v\u00e4ga"
+          },
+          {
+            "msd": "inf s-form",
+            "writtenForm": "v\u00e4gas"
+          },
+          {
+            "msd": "sup aktiv",
+            "writtenForm": "v\u00e4gt"
+          },
+          {
+            "msd": "sup s-form",
+            "writtenForm": "v\u00e4gts"
+          },
+          {
+            "msd": "pres_part nom",
+            "writtenForm": "v\u00e4gande"
+          },
+          {
+            "msd": "pres_part gen",
+            "writtenForm": "v\u00e4gandes"
+          },
+          {
+            "msd": "pret_part indef sg u nom",
+            "writtenForm": "v\u00e4gd"
+          },
+          {
+            "msd": "pret_part indef sg u gen",
+            "writtenForm": "v\u00e4gds"
+          },
+          {
+            "msd": "pret_part indef sg n nom",
+            "writtenForm": "v\u00e4gt"
+          },
+          {
+            "msd": "pret_part indef sg n gen",
+            "writtenForm": "v\u00e4gts"
+          },
+          {
+            "msd": "pret_part indef pl nom",
+            "writtenForm": "v\u00e4gda"
+          },
+          {
+            "msd": "pret_part indef pl gen",
+            "writtenForm": "v\u00e4gdas"
+          },
+          {
+            "msd": "pret_part def sg no_masc nom",
+            "writtenForm": "v\u00e4gda"
+          },
+          {
+            "msd": "pret_part def sg no_masc gen",
+            "writtenForm": "v\u00e4gdas"
+          },
+          {
+            "msd": "pret_part def sg masc nom",
+            "writtenForm": "v\u00e4gde"
+          },
+          {
+            "msd": "pret_part def sg masc gen",
+            "writtenForm": "v\u00e4gdes"
+          },
+          {
+            "msd": "pret_part def pl nom",
+            "writtenForm": "v\u00e4gda"
+          },
+          {
+            "msd": "pret_part def pl gen",
+            "writtenForm": "v\u00e4gdas"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "v\u00e4g"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "v\u00e4g-"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "v\u00e4g-"
+          }
+        ],
+        "baseform": "v\u00e4ga",
+        "lemgram": "v\u00e4ga..vb.1",
+        "paradigm": "vb_2a_viga",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026091.319555,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY989QNAJS3VXWCSCR75XP",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind aktiv",
+            "writtenForm": "v\u00e4gar"
+          },
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "v\u00e4gas"
+          },
+          {
+            "msd": "pret ind aktiv",
+            "writtenForm": "v\u00e4gade"
+          },
+          {
+            "msd": "pret ind s-form",
+            "writtenForm": "v\u00e4gades"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "v\u00e4ga"
+          },
+          {
+            "msd": "inf aktiv",
+            "writtenForm": "v\u00e4ga"
+          },
+          {
+            "msd": "inf s-form",
+            "writtenForm": "v\u00e4gas"
+          },
+          {
+            "msd": "sup aktiv",
+            "writtenForm": "v\u00e4gat"
+          },
+          {
+            "msd": "sup s-form",
+            "writtenForm": "v\u00e4gats"
+          },
+          {
+            "msd": "pres_part nom",
+            "writtenForm": "v\u00e4gande"
+          },
+          {
+            "msd": "pres_part gen",
+            "writtenForm": "v\u00e4gandes"
+          },
+          {
+            "msd": "pret_part indef sg u nom",
+            "writtenForm": "v\u00e4gad"
+          },
+          {
+            "msd": "pret_part indef sg u gen",
+            "writtenForm": "v\u00e4gads"
+          },
+          {
+            "msd": "pret_part indef sg n nom",
+            "writtenForm": "v\u00e4gat"
+          },
+          {
+            "msd": "pret_part indef sg n gen",
+            "writtenForm": "v\u00e4gats"
+          },
+          {
+            "msd": "pret_part indef pl nom",
+            "writtenForm": "v\u00e4gade"
+          },
+          {
+            "msd": "pret_part indef pl gen",
+            "writtenForm": "v\u00e4gades"
+          },
+          {
+            "msd": "pret_part def sg no_masc nom",
+            "writtenForm": "v\u00e4gade"
+          },
+          {
+            "msd": "pret_part def sg no_masc gen",
+            "writtenForm": "v\u00e4gades"
+          },
+          {
+            "msd": "pret_part def sg masc nom",
+            "writtenForm": "v\u00e4gade"
+          },
+          {
+            "msd": "pret_part def sg masc gen",
+            "writtenForm": "v\u00e4gades"
+          },
+          {
+            "msd": "pret_part def pl nom",
+            "writtenForm": "v\u00e4gade"
+          },
+          {
+            "msd": "pret_part def pl gen",
+            "writtenForm": "v\u00e4gades"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "v\u00e4g"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "v\u00e4g-"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "v\u00e4g-"
+          }
+        ],
+        "baseform": "v\u00e4ga",
+        "lemgram": "v\u00e4ga..vb.2",
+        "paradigm": "vb_1a_laga",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026091.319933,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY989R8JVGDCZWJRQX1V6E",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind aktiv",
+            "writtenForm": "v\u00e4ger"
+          },
+          {
+            "msd": "pret ind aktiv",
+            "writtenForm": "v\u00e4gde"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "v\u00e4g"
+          },
+          {
+            "msd": "inf aktiv",
+            "writtenForm": "v\u00e4ga"
+          },
+          {
+            "msd": "sup aktiv",
+            "writtenForm": "v\u00e4gt"
+          },
+          {
+            "msd": "pres_part nom",
+            "writtenForm": "v\u00e4gande"
+          },
+          {
+            "msd": "pres_part gen",
+            "writtenForm": "v\u00e4gandes"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "v\u00e4g"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "v\u00e4g-"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "v\u00e4g-"
+          }
+        ],
+        "baseform": "v\u00e4ga",
+        "lemgram": "v\u00e4ga..vb.3",
+        "paradigm": "vb_2m_v\u00e4ga",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026091.320252,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 3
+  }
+}

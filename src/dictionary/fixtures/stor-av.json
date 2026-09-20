@@ -1,0 +1,115 @@
+{
+  "total": 1,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY93JJ3776E65S13PN062R",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pos indef sg u nom",
+            "writtenForm": "stor"
+          },
+          {
+            "msd": "pos indef sg u gen",
+            "writtenForm": "stors"
+          },
+          {
+            "msd": "pos indef sg n nom",
+            "writtenForm": "stort"
+          },
+          {
+            "msd": "pos indef sg n gen",
+            "writtenForm": "storts"
+          },
+          {
+            "msd": "pos indef pl nom",
+            "writtenForm": "stora"
+          },
+          {
+            "msd": "pos indef pl gen",
+            "writtenForm": "storas"
+          },
+          {
+            "msd": "pos def sg no_masc nom",
+            "writtenForm": "stora"
+          },
+          {
+            "msd": "pos def sg no_masc gen",
+            "writtenForm": "storas"
+          },
+          {
+            "msd": "pos def sg masc nom",
+            "writtenForm": "store"
+          },
+          {
+            "msd": "pos def sg masc gen",
+            "writtenForm": "stores"
+          },
+          {
+            "msd": "pos def pl nom",
+            "writtenForm": "stora"
+          },
+          {
+            "msd": "pos def pl gen",
+            "writtenForm": "storas"
+          },
+          {
+            "msd": "komp nom",
+            "writtenForm": "st\u00f6rre"
+          },
+          {
+            "msd": "komp gen",
+            "writtenForm": "st\u00f6rres"
+          },
+          {
+            "msd": "super indef nom",
+            "writtenForm": "st\u00f6rst"
+          },
+          {
+            "msd": "super indef gen",
+            "writtenForm": "st\u00f6rsts"
+          },
+          {
+            "msd": "super def no_masc nom",
+            "writtenForm": "st\u00f6rsta"
+          },
+          {
+            "msd": "super def no_masc gen",
+            "writtenForm": "st\u00f6rstas"
+          },
+          {
+            "msd": "super def masc nom",
+            "writtenForm": "st\u00f6rste"
+          },
+          {
+            "msd": "super def masc gen",
+            "writtenForm": "st\u00f6rstes"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "stor"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "stor-"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "stor-"
+          }
+        ],
+        "baseform": "stor",
+        "lemgram": "stor..av.1",
+        "paradigm": "av_2_ung",
+        "partOfSpeech": "av"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026086.482687,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 1
+  }
+}

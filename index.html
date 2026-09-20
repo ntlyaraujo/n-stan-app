@@ -3,8 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="A private notebook for learning Swedish: vocabulary with full paradigms, grammar notes, and a writing journal. Everything stays in your own browser." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="n-stan" />
+    <!-- Set from the resolved theme by the script below, and kept in step by the
+         theme control in Settings. One tag rather than two media-scoped ones,
+         because an explicit choice has to be able to override the system. -->
+    <meta name="theme-color" content="#f9fafd" />
     <title>n-stan-app</title>
+    <script>
+      /*
+       * Resolve the theme (#46) before the first paint, so a dark-theme user
+       * never sees a white flash while the bundle loads.
+       *
+       * This is the one place the preference is read outside React. The key is
+       * spelled out rather than imported because nothing can be imported here:
+       * it must match `PREFIX + 'theme'` in `src/backup/localPreferences.ts`,
+       * which is where the Settings screen writes it.
+       */
+      ;(function () {
+        var choice
+        try {
+          choice = localStorage.getItem('n-stan-app:theme')
+        } catch (error) {
+          // Private window with site data blocked: fall back to the system.
+        }
+        if (choice === 'light' || choice === 'dark') {
+          document.documentElement.dataset.theme = choice
+        }
+        var dark =
+          choice === 'dark' ||
+          (choice !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
+        var meta = document.querySelector('meta[name="theme-color"]')
+        if (meta) meta.setAttribute('content', dark ? '#111419' : '#f9fafd')
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,0 +1,115 @@
+{
+  "total": 1,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY89D2Q4DAK72F1XMN7PV7",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind aktiv",
+            "writtenForm": "beundrar"
+          },
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "beundras"
+          },
+          {
+            "msd": "pret ind aktiv",
+            "writtenForm": "beundrade"
+          },
+          {
+            "msd": "pret ind s-form",
+            "writtenForm": "beundrades"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "beundra"
+          },
+          {
+            "msd": "inf aktiv",
+            "writtenForm": "beundra"
+          },
+          {
+            "msd": "inf s-form",
+            "writtenForm": "beundras"
+          },
+          {
+            "msd": "sup aktiv",
+            "writtenForm": "beundrat"
+          },
+          {
+            "msd": "sup s-form",
+            "writtenForm": "beundrats"
+          },
+          {
+            "msd": "pres_part nom",
+            "writtenForm": "beundrande"
+          },
+          {
+            "msd": "pres_part gen",
+            "writtenForm": "beundrandes"
+          },
+          {
+            "msd": "pret_part indef sg u nom",
+            "writtenForm": "beundrad"
+          },
+          {
+            "msd": "pret_part indef sg u gen",
+            "writtenForm": "beundrads"
+          },
+          {
+            "msd": "pret_part indef sg n nom",
+            "writtenForm": "beundrat"
+          },
+          {
+            "msd": "pret_part indef sg n gen",
+            "writtenForm": "beundrats"
+          },
+          {
+            "msd": "pret_part indef pl nom",
+            "writtenForm": "beundrade"
+          },
+          {
+            "msd": "pret_part indef pl gen",
+            "writtenForm": "beundrades"
+          },
+          {
+            "msd": "pret_part def sg no_masc nom",
+            "writtenForm": "beundrade"
+          },
+          {
+            "msd": "pret_part def sg no_masc gen",
+            "writtenForm": "beundrades"
+          },
+          {
+            "msd": "pret_part def sg masc nom",
+            "writtenForm": "beundrade"
+          },
+          {
+            "msd": "pret_part def sg masc gen",
+            "writtenForm": "beundrades"
+          },
+          {
+            "msd": "pret_part def pl nom",
+            "writtenForm": "beundrade"
+          },
+          {
+            "msd": "pret_part def pl gen",
+            "writtenForm": "beundrades"
+          }
+        ],
+        "baseform": "beundra",
+        "lemgram": "beundra..vb.1",
+        "paradigm": "vb_1a_beundra",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026059.682983,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 1
+  }
+}

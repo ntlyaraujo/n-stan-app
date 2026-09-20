@@ -1,0 +1,13 @@
+# Every path serves the app shell, so React Router can read it (#27).
+#
+# `src/App.tsx` uses BrowserRouter, which means /vocabulary and /journal/<id>
+# are real URLs the host is asked for. Without this line a deep link, a reload
+# or a bookmark 404s before any JavaScript runs.
+#
+# 200 rather than 301: the browser keeps the URL it asked for and is handed
+# index.html as the body, which is exactly what the router needs to see.
+#
+# Read by Netlify and by Cloudflare Pages, both from the published directory,
+# which is why it lives in `public/` and ships in the build rather than sitting
+# in a host-specific config file.
+/*    /index.html    200
