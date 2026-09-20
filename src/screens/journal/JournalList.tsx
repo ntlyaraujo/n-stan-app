@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
+import { SEARCH_DEBOUNCE_MS } from '../../components/liveSearch.ts'
 import { Screen } from '../../components/Screen.tsx'
 import {
+  distinctTags,
   journalEntryPreview,
   listJournalEntries,
   listJournalEntriesByDate,
@@ -19,8 +21,6 @@ import {
   FOCUS_RING,
   INPUT,
 } from './journalStyles.ts'
-
-const SEARCH_DEBOUNCE_MS = 200
 
 /**
  * The journal, grouped by Date (#39).
@@ -44,16 +44,13 @@ export function JournalList() {
   const [managingPrompts, setManagingPrompts] = useState(false)
 
   // Every Tag in the journal, so the filter does not shrink to the Tags of
-  // whatever is currently on screen.
+  // whatever is currently on screen. Folded without regard to case by
+  // `distinctTags`, which also gives back the spelling first used — one Tag is
+  // one option however it was typed.
   useEffect(() => {
     let cancelled = false
     void listJournalEntries().then((entries) => {
-      if (cancelled) return
-      const seen = new Map<string, Tag>()
-      for (const entry of entries) {
-        for (const each of entry.tags) if (!seen.has(each.toLowerCase())) seen.set(each.toLowerCase(), each)
-      }
-      setTags([...seen.values()].sort((a, b) => a.localeCompare(b)))
+      if (!cancelled) setTags(distinctTags(entries))
     })
     return () => {
       cancelled = true

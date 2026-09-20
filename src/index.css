@@ -80,7 +80,11 @@
 
   --danger: oklch(0.54 0.19 26);
   --danger-soft: oklch(0.95 0.03 26);
-  --warning: oklch(0.6 0.13 75);
+  /* Dark enough to carry body text on its own tint: 4.78:1 on `--warning-soft`,
+   * which is the missing-Gender notice on the vocabulary screens, and 5.38:1 on
+   * `--surface-raised`. At the amber it used to be it measured 3.58:1, under
+   * WCAG AA. The dark theme's warning is a separate value and already passes. */
+  --warning: oklch(0.53 0.13 75);
   --warning-soft: oklch(0.96 0.045 85);
   --success: oklch(0.53 0.11 152);
   --success-soft: oklch(0.95 0.04 152);

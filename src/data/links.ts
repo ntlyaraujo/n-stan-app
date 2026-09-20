@@ -494,9 +494,9 @@ export function deletePrompt(promptId: string): Promise<DeletionImpact> {
       )
 
       for (const entry of entries) {
-        const detached: JournalEntry = { ...entry, updatedAt: now() }
-        delete (detached as { attachedPromptId?: string }).attachedPromptId
-        await request(journal.put(encodeJournalEntry(detached)))
+        const unattached: JournalEntry = { ...entry, updatedAt: now() }
+        delete (unattached as { attachedPromptId?: string }).attachedPromptId
+        await request(journal.put(encodeJournalEntry(unattached)))
       }
 
       await request(prompts.delete(promptId))

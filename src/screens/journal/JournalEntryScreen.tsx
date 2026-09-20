@@ -1,7 +1,7 @@
 import { useId, useState, type ReactNode } from 'react'
 import { Link } from 'react-router'
 import { formatDate, formatWrittenAt, relativeDayLabel } from './journalDates.ts'
-import { JournalTagField } from './JournalTagField.tsx'
+import { TagField } from '../../components/TagField.tsx'
 import { PinPanel } from './PinPanel.tsx'
 import { PromptPicker } from './PromptPicker.tsx'
 import { SplitView } from './SplitView.tsx'
@@ -120,7 +120,12 @@ export function JournalEntryScreen() {
             />
           </div>
 
-          <JournalTagField tags={fields.tags} onChange={(tags) => update({ tags })} />
+          <TagField
+            tags={fields.tags}
+            placeholder="resa, vardagen…"
+            hint="A filter you share with Vocabulary and the Grammar Notes."
+            onChange={(tags) => update({ tags })}
+          />
         </div>
 
         {entry === undefined ? null : (

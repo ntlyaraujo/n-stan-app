@@ -25,6 +25,7 @@ import {
   STORES,
   withStores,
 } from './db.ts'
+import { canonicaliseTags, TAGGED_STORES } from './tagNamespace.ts'
 
 type Defaulted = 'date' | 'body' | 'pins' | 'tags'
 
@@ -75,7 +76,7 @@ export async function createJournalEntry(
   draft: JournalEntryDraft = {},
 ): Promise<JournalEntry> {
   const timestamp = now()
-  const entry: JournalEntry = {
+  const written: JournalEntry = {
     date: today(),
     body: '',
     pins: [],
@@ -86,22 +87,32 @@ export async function createJournalEntry(
     updatedAt: timestamp,
   }
 
-  await withStores([STORES.journalEntries], 'readwrite', async (transaction) => {
+  // The whole Tag namespace is in scope: a Tag first used on a word or a
+  // Grammar Note keeps its spelling here too.
+  return withStores(TAGGED_STORES, 'readwrite', async (transaction) => {
+    const entry: JournalEntry = {
+      ...written,
+      tags: await canonicaliseTags(transaction, written.tags),
+    }
     await request(
       transaction.objectStore(STORES.journalEntries).add(encodeJournalEntry(entry)),
     )
+    return entry
   })
-  return entry
 }
 
 export async function saveJournalEntry(entry: JournalEntry): Promise<JournalEntry> {
-  const saved: JournalEntry = { ...entry, updatedAt: now() }
-  await withStores([STORES.journalEntries], 'readwrite', async (transaction) => {
+  return withStores(TAGGED_STORES, 'readwrite', async (transaction) => {
+    const saved: JournalEntry = {
+      ...entry,
+      tags: await canonicaliseTags(transaction, entry.tags, { ignoreId: entry.id }),
+      updatedAt: now(),
+    }
     await request(
       transaction.objectStore(STORES.journalEntries).put(encodeJournalEntry(saved)),
     )
+    return saved
   })
-  return saved
 }
 
 export function getJournalEntry(id: string): Promise<JournalEntry | undefined> {

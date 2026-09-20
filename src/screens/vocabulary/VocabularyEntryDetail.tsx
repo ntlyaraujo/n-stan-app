@@ -16,6 +16,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
 
 import { Screen } from '../../components/Screen.tsx'
+import { FOCUS_RING as FOCUS } from '../../components/styles.ts'
 import type { DeletionImpact } from '../../data/index.ts'
 import {
   deleteVocabularyEntry,
@@ -26,9 +27,9 @@ import type { VocabularyEntry } from '../../domain/index.ts'
 import { shouldAttemptLookup } from '../../domain/index.ts'
 import type { DictionaryLookup } from '../../dictionary/index.ts'
 import { supportsLookup } from '../../dictionary/index.ts'
-import { DeletionWarning } from '../grammar/DeletionWarning.tsx'
-import { VocabularyBacklinks } from '../grammar/VocabularyBacklinks.tsx'
-import { PinnedInJournalEntries } from '../journal/PinnedInJournalEntries.tsx'
+import { DeletionWarning } from '../../components/DeletionWarning.tsx'
+import { PinnedInJournalEntries } from '../../components/PinnedInJournalEntries.tsx'
+import { VocabularyBacklinks } from '../../components/VocabularyBacklinks.tsx'
 import { autoFillOnOpen, isOnline, LOOKUP_OUTCOME_LABELS } from './autoFill.ts'
 import { Badge, GenderBadge, Notice, ParadigmBadge, PartOfSpeechBadge, TagList } from './badges.tsx'
 import {
@@ -38,8 +39,6 @@ import {
   PART_OF_SPEECH_LABELS,
 } from './vocabularyDraft.ts'
 
-const FOCUS =
-  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus'
 const PRIMARY_BUTTON = `inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 text-sm font-medium text-text-on-accent hover:bg-accent-hover ${FOCUS}`
 const SECONDARY_BUTTON = `inline-flex items-center justify-center rounded-lg border border-border bg-surface-raised px-4 py-2 text-sm font-medium text-text hover:bg-surface-sunken disabled:opacity-50 ${FOCUS}`
 const DANGER_BUTTON = `inline-flex items-center justify-center rounded-lg border border-danger px-4 py-2 text-sm font-medium text-danger hover:bg-danger-soft ${FOCUS}`

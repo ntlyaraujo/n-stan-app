@@ -13,13 +13,12 @@
  */
 
 import { useCallback, useEffect, useState } from 'react'
+import { SEARCH_DEBOUNCE_MS } from '../../components/liveSearch.ts'
 import { listGrammarNotes, listVocabularyEntries, pinnedItems } from '../../data/index.ts'
 import type { PinnedItem } from '../../data/index.ts'
 import type { GrammarNote, VocabularyEntry } from '../../domain/index.ts'
 
-const SEARCH_DEBOUNCE_MS = 200
-
-export interface PinnedWorkingSet {
+export interface EntryPins {
   readonly items: readonly PinnedItem[]
   readonly loading: boolean
   /** Re-read after a Pin is made or removed. */
@@ -38,7 +37,7 @@ const NO_PINS: LoadedPins = { request: '', items: [] }
  * yet — `/journal/new` before the first save — which has no Pins rather than an
  * error.
  */
-export function usePinnedWorkingSet(journalEntryId: string | undefined): PinnedWorkingSet {
+export function useEntryPins(journalEntryId: string | undefined): EntryPins {
   const [loaded, setLoaded] = useState<LoadedPins>(NO_PINS)
   const [token, setToken] = useState(1)
   const request = `${journalEntryId ?? ''}:${String(token)}`

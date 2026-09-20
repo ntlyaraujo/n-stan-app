@@ -15,6 +15,8 @@
  *   Unlink. Deleting a Vocabulary Entry or a Grammar Note lives there rather
  *   than in its repository, because a delete that skipped the Unlinking would
  *   silently lose writing.
+ * - `tagNamespace.ts` — the one Tag namespace the three of them share, and the
+ *   canonical spelling every write path goes through.
  * - `dictionaryCache.ts` — cached Lookups.
  */
 
@@ -25,4 +27,5 @@ export * from './grammarNoteRepository.ts'
 export * from './journalEntryRepository.ts'
 export * from './promptRepository.ts'
 export * from './links.ts'
+export * from './tagNamespace.ts'
 export * from './dictionaryCache.ts'

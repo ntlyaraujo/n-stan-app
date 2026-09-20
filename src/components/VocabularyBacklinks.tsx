@@ -15,9 +15,9 @@
 
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
-import { backlinksForVocabularyEntry } from '../../data/index.ts'
-import type { Backlink } from '../../domain/index.ts'
-import { FOCUS_RING } from './grammarStyles.ts'
+import { backlinksForVocabularyEntry } from '../data/index.ts'
+import type { Backlink } from '../domain/index.ts'
+import { FOCUS_RING } from './styles.ts'
 
 export function VocabularyBacklinks({ vocabularyEntryId }: { vocabularyEntryId: string }) {
   const [backlinks, setBacklinks] = useState<readonly Backlink[]>([])

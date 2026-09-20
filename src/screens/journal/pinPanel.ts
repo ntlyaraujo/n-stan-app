@@ -160,7 +160,7 @@ export function matchRows(
 }
 
 /**
- * The working set as it appears beside the writing on a phone, where the panel
+ * The Pins as they appear beside the writing on a phone, where the panel
  * itself is closed most of the time.
  *
  * Read straight off the stored Pins — `pinnedAs` is on both shapes, so a chip

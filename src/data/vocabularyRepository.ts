@@ -6,7 +6,8 @@
  *
  * - **Complete is derived at query time** by `isComplete`. It is never stored
  *   and never indexed, so an entry cannot drift out of agreement with its own
- *   Forms.
+ *   Forms. Gender is not part of it — `missingGender` is a separate filter,
+ *   never a redefinition of Complete.
  * - **A duplicate Lemma warns and never blocks.** `bok` the book and `bok` the
  *   beech tree are two Vocabulary Entries, so {@link createVocabularyEntry}
  *   always writes and hands back a warning beside the entry it wrote.
@@ -31,6 +32,7 @@ import {
   STORES,
   withStores,
 } from './db.ts'
+import { canonicaliseTags, TAGGED_STORES } from './tagNamespace.ts'
 
 type DistributiveOmit<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never
 
@@ -70,6 +72,14 @@ export interface VocabularyQuery {
   readonly partOfSpeech?: PartOfSpeech
   /** Derived from the Paradigm at query time; never a stored flag. */
   readonly completeness?: Completeness
+  /**
+   * Only nouns with no Gender yet. Deliberately *not* part of
+   * {@link Completeness}: Gender is not a Form and a noun with four Forms and
+   * no Gender is Complete, which the glossary fixes and a test pins. This is a
+   * review list of its own, for the one thing spec section 4 opens by saying
+   * cannot be guessed.
+   */
+  readonly missingGender?: boolean
   /** Live search across Lemma, translation and example sentence (spec 5). */
   readonly search?: string
 }
@@ -91,7 +101,7 @@ export async function createVocabularyEntry(
   draft: VocabularyEntryDraft,
 ): Promise<VocabularyEntryWriteResult> {
   const timestamp = now()
-  const entry = {
+  const captured = {
     translation: '',
     exampleSentence: '',
     tags: [],
@@ -102,11 +112,18 @@ export async function createVocabularyEntry(
     updatedAt: timestamp,
   } as VocabularyEntry
 
-  return withStores([STORES.vocabularyEntries], 'readwrite', async (transaction) => {
+  // The whole Tag namespace is in scope, not just this store: a Tag first used
+  // on a Grammar Note or a Journal Entry keeps its spelling here too.
+  return withStores(TAGGED_STORES, 'readwrite', async (transaction) => {
     const store = transaction.objectStore(STORES.vocabularyEntries)
     const existing = await getAllRecords<VocabularyEntry>(store)
-    const key = lemmaKey(entry.lemma)
+    const key = lemmaKey(captured.lemma)
     const duplicates = existing.filter((candidate) => lemmaKey(candidate.lemma) === key)
+
+    const entry = {
+      ...captured,
+      tags: await canonicaliseTags(transaction, captured.tags),
+    } as VocabularyEntry
 
     await request(store.add(encodeVocabularyEntry(entry)))
 
@@ -124,12 +141,16 @@ export async function createVocabularyEntry(
  * that union is where wrong-Paradigm Forms would creep in.
  */
 export async function saveVocabularyEntry(entry: VocabularyEntry): Promise<VocabularyEntry> {
-  const saved = { ...entry, updatedAt: now() } as VocabularyEntry
-  await withStores([STORES.vocabularyEntries], 'readwrite', async (transaction) => {
+  return withStores(TAGGED_STORES, 'readwrite', async (transaction) => {
+    const saved = {
+      ...entry,
+      tags: await canonicaliseTags(transaction, entry.tags, { ignoreId: entry.id }),
+      updatedAt: now(),
+    } as VocabularyEntry
     const store = transaction.objectStore(STORES.vocabularyEntries)
     await request(store.put(encodeVocabularyEntry(saved)))
+    return saved
   })
-  return saved
 }
 
 export function getVocabularyEntry(id: string): Promise<VocabularyEntry | undefined> {
@@ -170,6 +191,9 @@ export function listVocabularyEntries(
         if (query.completeness !== undefined) {
           const complete = isComplete(entry)
           if (complete !== (query.completeness === 'complete')) return false
+        }
+        if (query.missingGender === true) {
+          if (entry.partOfSpeech !== 'noun' || entry.gender !== undefined) return false
         }
         if (search !== undefined && search !== '') {
           const haystack =

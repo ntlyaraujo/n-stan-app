@@ -21,7 +21,8 @@ import {
  * Two things this screen must keep true:
  *
  * - **Writing with no Prompt is a first-class path**, not a fallback. *Write
- *   without a Prompt* is the first choice in the list and detaching is one tap.
+ *   without a Prompt* is the first choice in the list, and writing without the
+ *   Prompt already Attached is one tap away.
  * - **The level is a filter, never a gate.** Every Prompt in the set is reachable
  *   at any time; the filter only narrows what is on screen.
  */
@@ -32,8 +33,8 @@ export function PromptPicker({
   attachedPromptId?: Id
   onChange: (promptId: Id | undefined) => void
 }) {
-  // Held together with the id it was looked up for, so detaching shows the
-  // empty state at once rather than one render later.
+  // Held together with the id it was looked up for, so clearing the Attached
+  // Prompt shows the empty state at once rather than one render later.
   const [resolved, setResolved] = useState<{ id?: Id; prompt?: Prompt }>({})
   const [picking, setPicking] = useState(false)
   const headingId = useId()

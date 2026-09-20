@@ -21,6 +21,7 @@ import {
   STORES,
   withStores,
 } from './db.ts'
+import { canonicaliseTags, TAGGED_STORES } from './tagNamespace.ts'
 
 type Defaulted = 'body' | 'tags' | 'references'
 
@@ -38,7 +39,7 @@ export interface GrammarNoteQuery {
 
 export async function createGrammarNote(draft: GrammarNoteDraft): Promise<GrammarNote> {
   const timestamp = now()
-  const note: GrammarNote = {
+  const written: GrammarNote = {
     body: '',
     tags: [],
     references: [],
@@ -48,18 +49,28 @@ export async function createGrammarNote(draft: GrammarNoteDraft): Promise<Gramma
     updatedAt: timestamp,
   }
 
-  await withStores([STORES.grammarNotes], 'readwrite', async (transaction) => {
+  // The whole Tag namespace is in scope: a Tag first used on a word or a
+  // Journal Entry keeps its spelling here too.
+  return withStores(TAGGED_STORES, 'readwrite', async (transaction) => {
+    const note: GrammarNote = {
+      ...written,
+      tags: await canonicaliseTags(transaction, written.tags),
+    }
     await request(transaction.objectStore(STORES.grammarNotes).add(encodeGrammarNote(note)))
+    return note
   })
-  return note
 }
 
 export async function saveGrammarNote(note: GrammarNote): Promise<GrammarNote> {
-  const saved: GrammarNote = { ...note, updatedAt: now() }
-  await withStores([STORES.grammarNotes], 'readwrite', async (transaction) => {
+  return withStores(TAGGED_STORES, 'readwrite', async (transaction) => {
+    const saved: GrammarNote = {
+      ...note,
+      tags: await canonicaliseTags(transaction, note.tags, { ignoreId: note.id }),
+      updatedAt: now(),
+    }
     await request(transaction.objectStore(STORES.grammarNotes).put(encodeGrammarNote(saved)))
+    return saved
   })
-  return saved
 }
 
 export function getGrammarNote(id: string): Promise<GrammarNote | undefined> {
