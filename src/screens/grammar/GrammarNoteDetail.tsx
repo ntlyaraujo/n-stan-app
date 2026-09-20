@@ -28,7 +28,7 @@ import {
   referencedVocabularyEntries,
 } from '../../data/index.ts'
 import type { GrammarNote, VocabularyEntry } from '../../domain/index.ts'
-import { DeletionWarning } from './DeletionWarning.tsx'
+import { DeletionWarning } from '../../components/DeletionWarning.tsx'
 import {
   BADGE_NEUTRAL,
   BUTTON,

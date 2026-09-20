@@ -13,7 +13,7 @@
  *   rises from the bottom edge, stopping short of the top so the last lines you
  *   wrote stay in view.
  *
- * The working set does not disappear when the sheet does. The Pins sit on a bar
+ * What is Pinned does not disappear when the sheet does. The Pins sit on a bar
  * along the bottom edge, as text taken straight from the Pin, so what you are
  * practicing is beside you while you write — which is half of what pinning is
  * for. The sheet is for searching and pinning, and it closes again.
@@ -83,8 +83,8 @@ export function SplitView({
         </aside>
       ) : (
         <>
-          {/* The bar the writing sits above: the working set, still visible, and
-              the way into the sheet. */}
+          {/* The bar the writing sits above: the Pins, still visible, and the
+              way into the sheet. */}
           <div className="absolute inset-x-0 bottom-0 z-10 flex items-center gap-2 border-t border-border bg-surface-raised px-3 py-2">
             <div className="min-w-0 flex-1 overflow-x-auto">
               {chips.length === 0 ? (

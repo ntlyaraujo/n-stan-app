@@ -23,7 +23,7 @@ import { pinToJournalEntry, unpinFromJournalEntry } from '../../data/index.ts'
 import type { JournalEntry, PinnedKind } from '../../domain/index.ts'
 import { BUTTON, BUTTON_QUIET, FOCUS_RING, INPUT } from './journalStyles.ts'
 import { matchRows, pinnedTargetIds, pinRows, type PinRow } from './pinPanel.ts'
-import { usePanelSearch, usePinnedWorkingSet } from './usePinPanel.ts'
+import { useEntryPins, usePanelSearch } from './usePinPanel.ts'
 
 /**
  * A write against the Journal Entry, made through the editor so that it happens
@@ -45,17 +45,17 @@ export function PinPanel({
   /** Present only in the bottom sheet, where the panel can be dismissed. */
   onClose?: () => void
 }) {
-  const workingSet = usePinnedWorkingSet(journalEntryId)
+  const entryPins = useEntryPins(journalEntryId)
   const search = usePanelSearch()
   const [writing, setWriting] = useState<string | null>(null)
   const headingId = useId()
   const searchId = useId()
 
-  const rows = pinRows(workingSet.items)
+  const rows = pinRows(entryPins.items)
   const matches = matchRows(
     search.vocabulary,
     search.grammarNotes,
-    pinnedTargetIds(workingSet.items),
+    pinnedTargetIds(entryPins.items),
   )
   const searching = search.term.trim() !== ''
   const nothingToSearch =
@@ -65,14 +65,14 @@ export function PinPanel({
     setWriting(targetId)
     await onWrite((id) => pinToJournalEntry(id, kind, targetId))
     setWriting(null)
-    workingSet.reload()
+    entryPins.reload()
   }
 
   async function unpin(targetId: string) {
     setWriting(targetId)
     await onWrite((id) => unpinFromJournalEntry(id, targetId))
     setWriting(null)
-    workingSet.reload()
+    entryPins.reload()
   }
 
   return (

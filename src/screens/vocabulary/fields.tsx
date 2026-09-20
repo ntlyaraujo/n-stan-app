@@ -8,12 +8,10 @@
  */
 
 import type { ReactNode } from 'react'
-import { useId, useState } from 'react'
-import type { Tag } from '../../domain/index.ts'
-import { addTag, normaliseTag, removeTag } from '../../domain/index.ts'
+import { useId } from 'react'
 
-const FOCUS =
-  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus'
+/** The label style the vocabulary form's fields share. */
+export const FIELD_LABEL = 'text-sm font-medium text-text'
 
 const CONTROL =
   'w-full rounded-lg border border-border bg-surface-raised px-3 py-2 text-sm text-text placeholder:text-text-muted focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-focus'
@@ -29,7 +27,7 @@ export function FieldLabel({
 }) {
   return (
     <div className="flex flex-col gap-0.5">
-      <label htmlFor={htmlFor} className="text-sm font-medium text-text">
+      <label htmlFor={htmlFor} className={FIELD_LABEL}>
         {children}
       </label>
       {hint ? <p className="text-xs text-text-muted">{hint}</p> : null}
@@ -203,108 +201,5 @@ export function ChoiceField<Value extends string>({
         })}
       </div>
     </fieldset>
-  )
-}
-
-/**
- * Tags: free text in one namespace, matched without regard to case and kept in
- * the spelling first used — `addTag` handles both, so this control never
- * normalises on its own.
- */
-export function TagEditor({
-  tags,
-  onChange,
-  suggestions = [],
-}: {
-  tags: readonly Tag[]
-  onChange: (tags: readonly Tag[]) => void
-  suggestions?: readonly Tag[]
-}) {
-  const id = useId()
-  const [typed, setTyped] = useState('')
-
-  const commit = (raw: string) => {
-    const next = addTag(tags, raw)
-    setTyped('')
-    if (next !== tags) onChange(next)
-  }
-
-  const unused = suggestions.filter(
-    (suggestion) => !tags.some((tag) => normaliseTag(tag) === normaliseTag(suggestion)),
-  )
-
-  return (
-    <div className="flex flex-col gap-1.5">
-      <FieldLabel htmlFor={id} hint="A filter you share with Grammar Notes and the Journal.">
-        Tags
-      </FieldLabel>
-      {tags.length > 0 ? (
-        <ul className="flex flex-wrap gap-1.5">
-          {tags.map((tag) => (
-            <li key={tag}>
-              <span className="inline-flex items-center gap-1 rounded-full bg-surface-sunken py-1 pl-2.5 pr-1 text-xs font-medium text-text">
-                {tag}
-                <button
-                  type="button"
-                  aria-label={`Remove the Tag ${tag}`}
-                  className={`rounded-full px-1 text-text-muted hover:text-danger ${FOCUS}`}
-                  onClick={() => {
-                    onChange(removeTag(tags, tag))
-                  }}
-                >
-                  ×
-                </button>
-              </span>
-            </li>
-          ))}
-        </ul>
-      ) : null}
-      <div className="flex gap-2">
-        <input
-          id={id}
-          type="text"
-          className={CONTROL}
-          value={typed}
-          placeholder="en-words, from the podcast…"
-          onChange={(event) => {
-            setTyped(event.target.value)
-          }}
-          onKeyDown={(event) => {
-            if (event.key !== 'Enter' && event.key !== ',') return
-            event.preventDefault()
-            commit(typed)
-          }}
-          onBlur={() => {
-            commit(typed)
-          }}
-        />
-        <button
-          type="button"
-          className={`shrink-0 rounded-lg border border-border bg-surface-raised px-3 py-2 text-sm font-medium text-text hover:bg-surface-sunken ${FOCUS}`}
-          onClick={() => {
-            commit(typed)
-          }}
-        >
-          Add
-        </button>
-      </div>
-      {unused.length > 0 ? (
-        <ul className="flex flex-wrap gap-1.5">
-          {unused.slice(0, 8).map((suggestion) => (
-            <li key={suggestion}>
-              <button
-                type="button"
-                className={`rounded-full border border-border px-2.5 py-1 text-xs font-medium text-text-muted hover:border-accent hover:text-accent ${FOCUS}`}
-                onClick={() => {
-                  commit(suggestion)
-                }}
-              >
-                + {suggestion}
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : null}
-    </div>
   )
 }

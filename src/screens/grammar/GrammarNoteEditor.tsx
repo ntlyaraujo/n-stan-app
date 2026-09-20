@@ -22,18 +22,16 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
 
 import { Screen } from '../../components/Screen.tsx'
+import { TagField } from '../../components/TagField.tsx'
 import {
   addReference,
   createGrammarNote,
   getGrammarNote,
-  listGrammarNotes,
-  listVocabularyEntries,
   referencedVocabularyEntries,
   removeReference,
   saveGrammarNote,
 } from '../../data/index.ts'
 import type { GrammarNote, Tag, VocabularyEntry } from '../../domain/index.ts'
-import { GrammarTagField } from './GrammarTagField.tsx'
 import { VocabularyPicker } from './VocabularyPicker.tsx'
 import { BUTTON, BUTTON_PRIMARY, FOCUS_RING, INPUT, LABEL } from './grammarStyles.ts'
 
@@ -79,7 +77,6 @@ export function GrammarNoteEditor() {
   )
   const [saving, setSaving] = useState(false)
   const [problem, setProblem] = useState<string | null>(null)
-  const [tagSuggestions, setTagSuggestions] = useState<readonly Tag[]>([])
 
   useEffect(() => {
     let cancelled = false
@@ -113,20 +110,6 @@ export function GrammarNoteEditor() {
       cancelled = true
     }
   }, [grammarNoteId])
-
-  // Tags already in use anywhere, so the one namespace is easy to stay inside.
-  useEffect(() => {
-    let cancelled = false
-    void (async () => {
-      const [notes, words] = await Promise.all([listGrammarNotes(), listVocabularyEntries()])
-      if (cancelled) return
-      const used = [...notes.flatMap((each) => each.tags), ...words.flatMap((each) => each.tags)]
-      setTagSuggestions([...new Set(used)].sort())
-    })()
-    return () => {
-      cancelled = true
-    }
-  }, [])
 
   const save = async () => {
     const title = draft.title.trim()
@@ -219,9 +202,10 @@ export function GrammarNoteEditor() {
           />
         </div>
 
-        <GrammarTagField
+        <TagField
           tags={draft.tags}
-          suggestions={tagSuggestions}
+          placeholder="verb tenses, prepositions…"
+          hint="A filter you share with Vocabulary and the Journal."
           onChange={(tags) => {
             setDraft((current) => ({ ...current, tags }))
           }}

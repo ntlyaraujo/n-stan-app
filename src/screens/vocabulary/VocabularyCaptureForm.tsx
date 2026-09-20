@@ -20,20 +20,20 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
 
 import { Screen } from '../../components/Screen.tsx'
+import { FOCUS_RING as FOCUS } from '../../components/styles.ts'
+import { TagField } from '../../components/TagField.tsx'
 import type { DuplicateLemmaWarning } from '../../data/index.ts'
 import {
   createVocabularyEntry,
   duplicateLemmaWarning,
   getVocabularyEntry,
   lemmaKey,
-  listVocabularyEntries,
   saveVocabularyEntry,
 } from '../../data/index.ts'
 import type {
   ConjugationGroup,
   Gender,
   PartOfSpeech,
-  Tag,
   VocabularyEntry,
 } from '../../domain/index.ts'
 import {
@@ -46,7 +46,7 @@ import type { DictionaryLookup, LookupPartOfSpeech } from '../../dictionary/inde
 import { supportsLookup } from '../../dictionary/index.ts'
 import { attemptLookup, isOnline } from './autoFill.ts'
 import { Badge, Notice } from './badges.tsx'
-import { ChoiceField, SelectField, TagEditor, TextAreaField, TextField } from './fields.tsx'
+import { ChoiceField, FIELD_LABEL, SelectField, TextAreaField, TextField } from './fields.tsx'
 import type { VocabularyDraft } from './vocabularyDraft.ts'
 import {
   draftFromEntry,
@@ -61,8 +61,6 @@ import {
   vocabularyEntryDraftOf,
 } from './vocabularyDraft.ts'
 
-const FOCUS =
-  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus'
 const PRIMARY_BUTTON = `inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 text-sm font-medium text-text-on-accent hover:bg-accent-hover disabled:opacity-50 ${FOCUS}`
 const SECONDARY_BUTTON = `inline-flex items-center justify-center rounded-lg border border-border bg-surface-raised px-4 py-2 text-sm font-medium text-text hover:bg-surface-sunken disabled:opacity-50 ${FOCUS}`
 const CARD = 'flex flex-col gap-4 rounded-xl border border-border bg-surface-raised p-4'
@@ -125,7 +123,6 @@ export function VocabularyCaptureForm() {
   const [lookup, setLookup] = useState<DictionaryLookup | null>(null)
   const [lookingUp, setLookingUp] = useState(false)
   const [duplicate, setDuplicate] = useState<DuplicateLemmaWarning | null>(null)
-  const [knownTags, setKnownTags] = useState<readonly Tag[]>([])
   const [saving, setSaving] = useState(false)
 
   /** Lemma-and-Part-of-Speech pairs already tried, so a blur does not re-ask. */
@@ -217,18 +214,6 @@ export function VocabularyCaptureForm() {
     }
   }, [draft.lemma, vocabularyEntryId])
 
-  useEffect(() => {
-    let cancelled = false
-    void (async () => {
-      const entries = await listVocabularyEntries()
-      if (cancelled) return
-      setKnownTags([...new Set(entries.flatMap((each) => each.tags))].sort())
-    })()
-    return () => {
-      cancelled = true
-    }
-  }, [])
-
   const update = (patch: Partial<VocabularyDraft>) => {
     setDraft((current) => ({ ...current, ...patch }))
   }
@@ -277,7 +262,6 @@ export function VocabularyCaptureForm() {
       setDraft({ ...emptyDraft(), partOfSpeech: draft.partOfSpeech, tags: draft.tags })
       setLookup(null)
       setDuplicate(null)
-      setKnownTags((tags) => [...new Set([...tags, ...created.entry.tags])].sort())
     } finally {
       setSaving(false)
     }
@@ -516,9 +500,11 @@ export function VocabularyCaptureForm() {
               update({ exampleSentence })
             }}
           />
-          <TagEditor
+          <TagField
             tags={draft.tags}
-            suggestions={knownTags}
+            labelClassName={FIELD_LABEL}
+            placeholder="en-words, from the podcast…"
+            hint="A filter you share with Grammar Notes and the Journal."
             onChange={(tags) => {
               update({ tags })
             }}

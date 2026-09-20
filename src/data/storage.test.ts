@@ -43,6 +43,7 @@ import {
   seedBuiltInPrompts,
   setBuiltInPromptHidden,
 } from './promptRepository.ts'
+import { listTags } from './tagNamespace.ts'
 import {
   createVocabularyEntry,
   duplicateLemmaWarning,
@@ -441,6 +442,92 @@ describe('Prompt storage', () => {
     expect((await listPrompts({ origin: 'custom' })).map((found) => found.id)).toEqual([
       prompt.id,
     ])
+  })
+})
+
+describe('the one Tag namespace', () => {
+  it('keeps a Tag in the spelling first used, whichever kind of record it reaches next', async () => {
+    const { entry } = await createVocabularyEntry({
+      lemma: 'tala',
+      partOfSpeech: 'verb',
+      tags: ['Verb tenses'],
+      forms: {},
+    })
+    expect(entry.tags).toEqual(['Verb tenses'])
+
+    const note = await createGrammarNote({ title: 'Preteritum', tags: ['verb tenses'] })
+    const journalEntry = await createJournalEntry({ body: 'Jag talade.', tags: ['VERB TENSES'] })
+
+    expect(note.tags).toEqual(['Verb tenses'])
+    expect(journalEntry.tags).toEqual(['Verb tenses'])
+    expect((await getGrammarNote(note.id))?.tags).toEqual(['Verb tenses'])
+    expect((await getJournalEntry(journalEntry.id))?.tags).toEqual(['Verb tenses'])
+  })
+
+  it('keeps the spelling first used when a Tag is added to an existing record', async () => {
+    await createGrammarNote({ title: 'Substantiv', tags: ['En-ord'] })
+    const { entry } = await createVocabularyEntry({ lemma: 'bok', partOfSpeech: 'noun', forms: {} })
+
+    const saved = await saveVocabularyEntry({ ...entry, tags: ['en-ord'] })
+
+    expect(saved.tags).toEqual(['En-ord'])
+    expect((await getVocabularyEntry(entry.id))?.tags).toEqual(['En-ord'])
+  })
+
+  it('lets a record re-spell a Tag nothing else is using', async () => {
+    const note = await createGrammarNote({ title: 'Preteritum', tags: ['verb tenses'] })
+
+    const saved = await saveGrammarNote({ ...note, tags: ['Verb Tenses'] })
+
+    expect(saved.tags).toEqual(['Verb Tenses'])
+    expect((await listGrammarNotes({ tag: 'VERB TENSES' })).map((found) => found.id)).toEqual([
+      note.id,
+    ])
+  })
+
+  it('de-duplicates Tags written in two spellings at once', async () => {
+    const journalEntry = await createJournalEntry({ tags: ['Resa', 'resa', ' resa '] })
+
+    expect(journalEntry.tags).toEqual(['Resa'])
+  })
+
+  it('finds a Tag anywhere in the namespace, whichever kind of record introduced it', async () => {
+    await createVocabularyEntry({ lemma: 'bok', partOfSpeech: 'noun', tags: ['Läsning'], forms: {} })
+    await createGrammarNote({ title: 'Preteritum', tags: ['Verb tenses'] })
+    await createJournalEntry({ tags: ['resa', 'läsning'] })
+
+    expect(await listTags()).toEqual(['Läsning', 'resa', 'Verb tenses'])
+  })
+})
+
+describe('the missing-Gender review list', () => {
+  it('offers back the nouns with no Gender, without touching what Complete means', async () => {
+    const { entry: bok } = await createVocabularyEntry({
+      lemma: 'bok',
+      partOfSpeech: 'noun',
+      forms: bokForms,
+    })
+    await createVocabularyEntry({
+      lemma: 'hus',
+      partOfSpeech: 'noun',
+      gender: 'ett',
+      forms: {},
+    })
+    await createVocabularyEntry({ lemma: 'ofta', partOfSpeech: 'adverb' })
+
+    // The two filters are orthogonal: *bok* is Complete by the glossary's
+    // four/four/three and still missing its Gender, while *hus* has its Gender
+    // and not its Forms.
+    expect(isComplete(bok)).toBe(true)
+    expect(
+      (await listVocabularyEntries({ completeness: 'incomplete' })).map((e) => e.lemma),
+    ).toEqual(['hus'])
+    expect((await listVocabularyEntries({ missingGender: true })).map((e) => e.lemma)).toEqual([
+      'bok',
+    ])
+
+    await saveVocabularyEntry({ ...bok, partOfSpeech: 'noun', gender: 'en', forms: bokForms })
+    expect(await listVocabularyEntries({ missingGender: true })).toEqual([])
   })
 })
 

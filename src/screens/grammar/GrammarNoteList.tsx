@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 
 import { Screen } from '../../components/Screen.tsx'
-import { listGrammarNotes, listVocabularyEntries } from '../../data/index.ts'
+import { distinctTags, listGrammarNotes, listVocabularyEntries } from '../../data/index.ts'
 import type { GrammarNote, Tag } from '../../domain/index.ts'
 import { BADGE_NEUTRAL, BUTTON_PRIMARY, FOCUS_RING, INPUT } from './grammarStyles.ts'
 
@@ -78,14 +78,15 @@ export function GrammarNoteList() {
   })
 
   // Every Tag in use, for the filter's options. Read once: the filtered query
-  // below cannot supply them, since a Tag filter hides the other Tags.
+  // below cannot supply them, since a Tag filter hides the other Tags. Folded
+  // without regard to case, so one Tag is one option however it was typed.
   useEffect(() => {
     let cancelled = false
     void (async () => {
       const all = await listGrammarNotes()
       if (cancelled) return
       setTotal(all.length)
-      setAllTags([...new Set(all.flatMap((note) => note.tags))].sort())
+      setAllTags(distinctTags(all))
     })()
     return () => {
       cancelled = true

@@ -20,16 +20,16 @@
  * small print, because this is not a generic destructive-action dialog. The one
  * thing that disappears is the link.
  *
- * It lives beside the Grammar Note screens rather than under the Vocabulary
- * ones because both deletes share it, and it replaces the stopgap confirm that
- * #20 left behind on `VocabularyEntryDetail`.
+ * It is shared: the Grammar Note and the Vocabulary Entry deletes both use it,
+ * and it replaces the stopgap confirm that #20 left behind on
+ * `VocabularyEntryDetail`.
  */
 
 import type { ReactNode } from 'react'
 import { Link } from 'react-router'
-import type { DeletionImpact } from '../../data/index.ts'
-import { formatDate } from '../journal/journalDates.ts'
-import { BUTTON, BUTTON_DANGER, FOCUS_RING } from './grammarStyles.ts'
+import type { DeletionImpact } from '../data/index.ts'
+import { formatDate } from '../screens/journal/journalDates.ts'
+import { BUTTON, BUTTON_DANGER, FOCUS_RING } from './styles.ts'
 
 type Deleting = 'vocabularyEntry' | 'grammarNote'
 

@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router'
 import type { ComponentType, SVGProps } from 'react'
+import { FOCUS_RING as FOCUS } from '../components/styles.ts'
 
 type IconProps = SVGProps<SVGSVGElement>
 
@@ -74,8 +75,6 @@ const SECTIONS: Section[] = [
   { to: '/settings', label: 'Settings', Icon: SettingsIcon },
 ]
 
-const FOCUS =
-  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus'
 
 function railClasses(isActive: boolean) {
   return [

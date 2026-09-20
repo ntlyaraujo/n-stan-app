@@ -17,10 +17,10 @@
 
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
-import { journalEntriesPinning, journalEntryPreview } from '../../data/index.ts'
-import type { JournalEntry } from '../../domain/index.ts'
-import { dayHeading, formatTimeWritten } from './journalDates.ts'
-import { CARD, FOCUS_RING } from './journalStyles.ts'
+import { journalEntriesPinning, journalEntryPreview } from '../data/index.ts'
+import type { JournalEntry } from '../domain/index.ts'
+import { dayHeading, formatTimeWritten } from '../screens/journal/journalDates.ts'
+import { CARD, FOCUS_RING } from './styles.ts'
 
 export function PinnedInJournalEntries({ vocabularyEntryId }: { vocabularyEntryId: string }) {
   const [entries, setEntries] = useState<readonly JournalEntry[]>([])
