@@ -1,0 +1,147 @@
+{
+  "total": 1,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY8C09AZV70S11N8FFQ5NH",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind aktiv",
+            "writtenForm": "dricker"
+          },
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "drickes"
+          },
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "dricks"
+          },
+          {
+            "msd": "pres konj aktiv",
+            "writtenForm": "dricke"
+          },
+          {
+            "msd": "pres konj s-form",
+            "writtenForm": "drickes"
+          },
+          {
+            "msd": "pret ind aktiv",
+            "writtenForm": "drack"
+          },
+          {
+            "msd": "pret ind s-form",
+            "writtenForm": "dracks"
+          },
+          {
+            "msd": "pret konj aktiv",
+            "writtenForm": "drucke"
+          },
+          {
+            "msd": "pret konj s-form",
+            "writtenForm": "druckes"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "drick"
+          },
+          {
+            "msd": "inf aktiv",
+            "writtenForm": "dricka"
+          },
+          {
+            "msd": "inf s-form",
+            "writtenForm": "drickas"
+          },
+          {
+            "msd": "sup aktiv",
+            "writtenForm": "druckit"
+          },
+          {
+            "msd": "sup s-form",
+            "writtenForm": "druckits"
+          },
+          {
+            "msd": "pres_part nom",
+            "writtenForm": "drickande"
+          },
+          {
+            "msd": "pres_part gen",
+            "writtenForm": "drickandes"
+          },
+          {
+            "msd": "pret_part indef sg u nom",
+            "writtenForm": "drucken"
+          },
+          {
+            "msd": "pret_part indef sg u gen",
+            "writtenForm": "druckens"
+          },
+          {
+            "msd": "pret_part indef sg n nom",
+            "writtenForm": "drucket"
+          },
+          {
+            "msd": "pret_part indef sg n gen",
+            "writtenForm": "druckets"
+          },
+          {
+            "msd": "pret_part indef pl nom",
+            "writtenForm": "druckna"
+          },
+          {
+            "msd": "pret_part indef pl gen",
+            "writtenForm": "drucknas"
+          },
+          {
+            "msd": "pret_part def sg no_masc nom",
+            "writtenForm": "druckna"
+          },
+          {
+            "msd": "pret_part def sg no_masc gen",
+            "writtenForm": "drucknas"
+          },
+          {
+            "msd": "pret_part def sg masc nom",
+            "writtenForm": "druckne"
+          },
+          {
+            "msd": "pret_part def sg masc gen",
+            "writtenForm": "drucknes"
+          },
+          {
+            "msd": "pret_part def pl nom",
+            "writtenForm": "druckna"
+          },
+          {
+            "msd": "pret_part def pl gen",
+            "writtenForm": "drucknas"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "drick"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "drick-"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "drick-"
+          }
+        ],
+        "baseform": "dricka",
+        "lemgram": "dricka..vb.1",
+        "paradigm": "vb_4a_dricka",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026062.345702,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 1
+  }
+}

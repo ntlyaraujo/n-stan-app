@@ -1,0 +1,27 @@
+{
+  "total": 1,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY8PW0R0ZSRGX2G6XVMM7V",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind aktiv",
+            "writtenForm": "lyster"
+          }
+        ],
+        "baseform": "lyster",
+        "lemgram": "lyster..vb.1",
+        "paradigm": "vb_0d_lyster",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026073.472638,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 1
+  }
+}

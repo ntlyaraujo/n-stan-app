@@ -1,0 +1,164 @@
+{
+  "total": 2,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY873S2CGGPX1NS3TNXRKZ",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "sg indef nom",
+            "writtenForm": "accept"
+          },
+          {
+            "msd": "sg indef gen",
+            "writtenForm": "accepts"
+          },
+          {
+            "msd": "sg def nom",
+            "writtenForm": "accepten"
+          },
+          {
+            "msd": "sg def nom",
+            "writtenForm": "acceptet"
+          },
+          {
+            "msd": "sg def gen",
+            "writtenForm": "acceptens"
+          },
+          {
+            "msd": "sg def gen",
+            "writtenForm": "acceptets"
+          },
+          {
+            "msd": "pl indef nom",
+            "writtenForm": "accept"
+          },
+          {
+            "msd": "pl indef gen",
+            "writtenForm": "accepts"
+          },
+          {
+            "msd": "pl def nom",
+            "writtenForm": "accepten"
+          },
+          {
+            "msd": "pl def gen",
+            "writtenForm": "acceptens"
+          },
+          {
+            "msd": "ci",
+            "writtenForm": "accept-"
+          },
+          {
+            "msd": "ci",
+            "writtenForm": "accept"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "accepts-"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "accept-"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "accepts"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "accept"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "accept-"
+          }
+        ],
+        "baseform": "accept",
+        "inherent": [
+          "v"
+        ],
+        "lemgram": "accept..nn.1",
+        "paradigm": "nn_6v_borst",
+        "partOfSpeech": "nn"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026057.337964,
+      "version": 1
+    },
+    {
+      "resource": "saldom",
+      "id": "01HQMY873T7V3HW1WJ7TM5P611",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "sg indef nom",
+            "writtenForm": "accept"
+          },
+          {
+            "msd": "sg indef gen",
+            "writtenForm": "accepts"
+          },
+          {
+            "msd": "sg def nom",
+            "writtenForm": "accepten"
+          },
+          {
+            "msd": "sg def gen",
+            "writtenForm": "acceptens"
+          },
+          {
+            "msd": "pl indef nom",
+            "writtenForm": "accepter"
+          },
+          {
+            "msd": "pl indef gen",
+            "writtenForm": "accepters"
+          },
+          {
+            "msd": "pl def nom",
+            "writtenForm": "accepterna"
+          },
+          {
+            "msd": "pl def gen",
+            "writtenForm": "accepternas"
+          },
+          {
+            "msd": "ci",
+            "writtenForm": "accept-"
+          },
+          {
+            "msd": "ci",
+            "writtenForm": "accept"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "accept-"
+          },
+          {
+            "msd": "cm",
+            "writtenForm": "accept"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "accept-"
+          }
+        ],
+        "baseform": "accept",
+        "inherent": [
+          "u"
+        ],
+        "lemgram": "accept..nn.2",
+        "paradigm": "nn_3u_karbid",
+        "partOfSpeech": "nn"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026057.338175,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 2
+  }
+}

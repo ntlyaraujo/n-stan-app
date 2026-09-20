@@ -1,0 +1,191 @@
+{
+  "total": 1,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY94NV58C9HNKRXEQX5CMQ",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "pres ind aktiv",
+            "writtenForm": "talar"
+          },
+          {
+            "msd": "pres ind s-form",
+            "writtenForm": "talas"
+          },
+          {
+            "msd": "pret ind aktiv",
+            "writtenForm": "talade"
+          },
+          {
+            "msd": "pret ind aktiv",
+            "writtenForm": "talte"
+          },
+          {
+            "msd": "pret ind s-form",
+            "writtenForm": "talades"
+          },
+          {
+            "msd": "pret ind s-form",
+            "writtenForm": "taltes"
+          },
+          {
+            "msd": "imper",
+            "writtenForm": "tala"
+          },
+          {
+            "msd": "inf aktiv",
+            "writtenForm": "tala"
+          },
+          {
+            "msd": "inf s-form",
+            "writtenForm": "talas"
+          },
+          {
+            "msd": "sup aktiv",
+            "writtenForm": "talat"
+          },
+          {
+            "msd": "sup aktiv",
+            "writtenForm": "talt"
+          },
+          {
+            "msd": "sup s-form",
+            "writtenForm": "talats"
+          },
+          {
+            "msd": "sup s-form",
+            "writtenForm": "talts"
+          },
+          {
+            "msd": "pres_part nom",
+            "writtenForm": "talande"
+          },
+          {
+            "msd": "pres_part gen",
+            "writtenForm": "talandes"
+          },
+          {
+            "msd": "pret_part indef sg u nom",
+            "writtenForm": "talad"
+          },
+          {
+            "msd": "pret_part indef sg u nom",
+            "writtenForm": "tald"
+          },
+          {
+            "msd": "pret_part indef sg u gen",
+            "writtenForm": "talads"
+          },
+          {
+            "msd": "pret_part indef sg u gen",
+            "writtenForm": "talds"
+          },
+          {
+            "msd": "pret_part indef sg n nom",
+            "writtenForm": "talat"
+          },
+          {
+            "msd": "pret_part indef sg n nom",
+            "writtenForm": "talt"
+          },
+          {
+            "msd": "pret_part indef sg n gen",
+            "writtenForm": "talats"
+          },
+          {
+            "msd": "pret_part indef sg n gen",
+            "writtenForm": "talts"
+          },
+          {
+            "msd": "pret_part indef pl nom",
+            "writtenForm": "talade"
+          },
+          {
+            "msd": "pret_part indef pl nom",
+            "writtenForm": "talda"
+          },
+          {
+            "msd": "pret_part indef pl gen",
+            "writtenForm": "talades"
+          },
+          {
+            "msd": "pret_part indef pl gen",
+            "writtenForm": "taldas"
+          },
+          {
+            "msd": "pret_part def sg no_masc nom",
+            "writtenForm": "talade"
+          },
+          {
+            "msd": "pret_part def sg no_masc nom",
+            "writtenForm": "talda"
+          },
+          {
+            "msd": "pret_part def sg no_masc gen",
+            "writtenForm": "talades"
+          },
+          {
+            "msd": "pret_part def sg no_masc gen",
+            "writtenForm": "taldas"
+          },
+          {
+            "msd": "pret_part def sg masc nom",
+            "writtenForm": "talade"
+          },
+          {
+            "msd": "pret_part def sg masc nom",
+            "writtenForm": "talde"
+          },
+          {
+            "msd": "pret_part def sg masc gen",
+            "writtenForm": "talades"
+          },
+          {
+            "msd": "pret_part def sg masc gen",
+            "writtenForm": "taldes"
+          },
+          {
+            "msd": "pret_part def pl nom",
+            "writtenForm": "talade"
+          },
+          {
+            "msd": "pret_part def pl nom",
+            "writtenForm": "talda"
+          },
+          {
+            "msd": "pret_part def pl gen",
+            "writtenForm": "talades"
+          },
+          {
+            "msd": "pret_part def pl gen",
+            "writtenForm": "taldas"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "tal"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "tal-"
+          },
+          {
+            "msd": "sms",
+            "writtenForm": "tal-"
+          }
+        ],
+        "baseform": "tala",
+        "lemgram": "tala..vb.1",
+        "paradigm": "vb_va_tala",
+        "partOfSpeech": "vb"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026087.611602,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 1
+  }
+}

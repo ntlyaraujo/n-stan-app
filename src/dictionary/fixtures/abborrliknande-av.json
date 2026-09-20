@@ -1,0 +1,31 @@
+{
+  "total": 1,
+  "hits": [
+    {
+      "resource": "saldom",
+      "id": "01HQMY872CF4DZ4RQXJ914CJVK",
+      "entry": {
+        "inflectionTable": [
+          {
+            "msd": "invar",
+            "writtenForm": "abborrliknande"
+          },
+          {
+            "msd": "c",
+            "writtenForm": "abborrliknande"
+          }
+        ],
+        "baseform": "abborrliknande",
+        "lemgram": "abborrliknande..av.1",
+        "paradigm": "av_i_diverse",
+        "partOfSpeech": "av"
+      },
+      "last_modified_by": "local admin",
+      "last_modified": 1709026057.292705,
+      "version": 1
+    }
+  ],
+  "distribution": {
+    "saldom": 1
+  }
+}
