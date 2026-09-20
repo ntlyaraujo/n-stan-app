@@ -14,12 +14,14 @@
  * - `exportReminder.ts` (#26) — how long since the last backup, and when to say
  *   so. `ExportReminderNotice.tsx` is the notice itself; it is imported
  *   directly, because a component does not belong in a barrel file.
- *
- * Markdown export is #44 and is not here.
+ * - `markdownExport.ts` (#44) — the other export: one readable document, lossy
+ *   and not re-importable, so that the writing is never trapped in an app only
+ *   you run. It deliberately does not reset the reminder above.
  */
 
 export * from './backupFile.ts'
 export * from './exportBackup.ts'
+export * from './markdownExport.ts'
 export * from './exportReminder.ts'
 export * from './importBackup.ts'
 export * from './persistentStorage.ts'
