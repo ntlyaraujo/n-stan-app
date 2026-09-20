@@ -5,6 +5,9 @@ A personal app for practicing Swedish, modeled on the method of *Fluentish* by J
 Status: agreed design, not yet implemented.
 Last updated: 2026-09-20
 
+Vocabulary is fixed in [CONTEXT.md](../CONTEXT.md). Where this spec and that glossary
+disagree, the glossary wins.
+
 ---
 
 ## 1. Purpose
@@ -53,15 +56,15 @@ This app takes the vocabulary, grammar and journaling structure, and the writing
 
 All entities carry an id and creation and update timestamps.
 
-### 3.1 Vocabulary entry
+### 3.1 Vocabulary Entry
 
-An entry is typed by part of speech. The type determines which form fields exist. **Every form field is optional**, so capture stays fast and forms can be completed later.
+A Vocabulary Entry is typed by part of speech. The part of speech determines which Forms exist — together, its Paradigm. **Every Form is optional**, so capture stays fast and a Paradigm can be completed later.
 
-| Part of speech | Form fields |
+| Part of speech | Forms |
 |---|---|
-| noun | gender (utrum/neutrum, meaning *en* or *ett*), indefinite singular, definite singular, indefinite plural, definite plural |
+| noun | gender (*en* or *ett*), indefinite singular, definite singular, indefinite plural, definite plural |
 | verb | conjugation group, infinitive, present, preterite, supine |
-| adjective | positive utrum, positive neutrum, positive plural |
+| adjective | positive en-form, positive ett-form, positive plural |
 | adverb | none |
 | phrase | none |
 | other | none |
@@ -72,7 +75,10 @@ Common to every type:
 - **translation**
 - **example sentence**: one, written by you, personally meaningful
 - **tags**
-- **completeness flag**: whether the form fields were ever filled
+- **complete**: derived, never stored. Every Form in the Paradigm has a value. A part of
+  speech with no Paradigm, meaning adverb, phrase and other, is therefore always complete.
+- **lookup outcome**: never attempted, filled, not found or deferred. This, and not
+  completeness, decides whether the Dictionary is tried again.
 
 Worked examples of the paradigms: *bok / boken / böcker / böckerna* for a noun, *tala / talar / talade / talat* for a verb, *stor / stort / stora* for an adjective.
 
@@ -80,21 +86,24 @@ Worked examples of the paradigms: *bok / boken / böcker / böckerna* for a noun
 
 **Duplicates warn but never block.** Homonyms are real: *bok* is both a book and a beech tree.
 
-### 3.2 Grammar note
+### 3.2 Grammar Note
 
 - **title**
 - **body**: free-form Markdown, rendered on view
 - **tags**
-- **linked vocabulary entries**
+- **references** to vocabulary entries, with backlinks shown automatically on the word
 
 Conjugation and declension tables are written as Markdown tables. There is no table builder.
 
-### 3.3 Journal entry
+### 3.3 Journal Entry
 
-- **date**, no title
+- **date**: the day the entry belongs to, chosen by you and defaulting to today. Distinct
+  from the creation timestamp, which is never edited. No title.
 - **body**: a single text field, Swedish only
 - **attached prompt**, optional
-- **pinned vocabulary and grammar notes**, which double as the record of what you practiced
+- **pins**: vocabulary entries and grammar notes kept beside you while writing, which
+  double as the record of what you practiced. Pins belong to this entry and never carry
+  over to the next one.
 - **tags**
 
 Multiple entries per day are allowed. The list groups by date and uses the first line of the text as the preview.
@@ -103,7 +112,9 @@ Multiple entries per day are allowed. The list groups by date and uses the first
 
 - **text**, in Swedish
 - **level**: beginner, intermediate or advanced
-- **custom flag**
+- **origin**: built-in or custom. Built-in prompts ship with the app and are read-only.
+  You may hide one, and editing one produces a custom copy, so a revised prompt set can
+  ship later without discarding your wording.
 
 Roughly forty original prompts ship with the app, spread across the three levels, and you can add your own. They are original writing, not reproduced from the book.
 
@@ -111,7 +122,7 @@ Because prompts are Swedish-only, **the beginner set must be authored in deliber
 
 ### 3.5 Tags
 
-A single shared namespace across vocabulary, grammar notes and journal entries. A tag such as *verb tenses* pulls up words and notes together. Each section's list supports search and filtering by tag, and vocabulary additionally filters by part of speech and by completeness.
+A single shared namespace across vocabulary, grammar notes and journal entries. A tag such as *verb tenses* pulls up words and notes together. Tags match without regard to case, so *Verb tenses* and *verb tenses* are one tag, kept in the spelling first used. Each section's list supports search and filtering by tag, and vocabulary additionally filters by part of speech and by completeness.
 
 ### 3.6 Links
 
@@ -120,7 +131,7 @@ A single shared namespace across vocabulary, grammar notes and journal entries. 
 | Grammar note to vocabulary | Explicit picker on the note | Backlinks shown automatically on the word |
 | Journal entry to vocabulary or grammar | Pinning it in the side panel while writing | Saved per entry |
 
-**Deletion never cascades.** Deleting a linked item warns you first, showing what is about to lose its link, then removes only the link. Notes and journal entries are never destroyed by the deletion of something they reference.
+**Deletion never cascades.** Deleting something warns you first, showing what is about to lose its link. Grammar notes and journal entries are never destroyed by the deletion of something they reference, and they lose it differently. A grammar note simply loses the reference. A journal entry keeps the pin as a **tombstone**: the lemma or title it was made with, held as plain text and no longer linked, because a record of what you practiced must not change months after the fact. See [ADR-0001](./adr/0001-pin-tombstones.md).
 
 ---
 
@@ -138,11 +149,11 @@ Verified live during design:
 
 **Behavior**
 
-1. Looking up a lemma calls the API and prefills the form fields.
+1. Looking up a lemma calls the API and prefills the Forms.
 2. Every result is cached permanently in local storage, so a word is fetched once.
-3. Auto-fill **prefills and never locks**. Every field stays editable.
-4. Offline, the entry saves immediately with blank forms and is marked incomplete. The fill is attempted automatically the next time that entry is opened with a connection.
-5. Incomplete entries are filterable, which doubles as a useful review list.
+3. Auto-fill **prefills and never locks**. Every Form stays editable.
+4. Offline, the entry saves immediately with blank Forms and its lookup is marked deferred. The fill is attempted automatically the next time that entry is opened with a connection.
+5. Entries that are not complete are filterable, which doubles as a useful review list.
 
 **Known caveat.** The conjugation group is not a labeled field in the API. It has to be derived from the paradigm identifier, which is a small mapping with real risk of edge cases. Treat the group as best-effort and always user-correctable.
 
@@ -157,9 +168,9 @@ Verified live during design:
 While writing, a panel beside the journal offers:
 
 - **Live search** across vocabulary and grammar
-- **A pinned working set** for the words you are deliberately practicing that session
+- **Pins** for the words and notes you are deliberately practicing in this entry
 
-Pinning attaches the item to the entry, so one gesture both keeps it visible and records that you used it. Anything you did not end up using can be unpinned.
+Pinning binds the item to the entry, so one gesture both keeps it visible and records that you used it. Anything you did not end up using can be unpinned. Pins are per entry: a second entry the same evening starts with none.
 
 **Layout.** Side by side on a wide screen. On a phone, a bottom sheet or a toggled tab.
 
@@ -213,7 +224,7 @@ Component tests are excluded on purpose. The storage and linking logic is where 
 The decisions most likely to be second-guessed later, with the reasoning that produced them.
 
 **Runtime dictionary lookup instead of a bundled dataset.**
-Bundling would mean downloading and parsing a source file well over a hundred megabytes, maintaining an extraction script, and shipping several megabytes to a phone. The app is mobile-first. A word is looked up once and cached forever, so the runtime cost is paid a single time per word, and capture still works offline because the form fields are optional.
+Bundling would mean downloading and parsing a source file well over a hundred megabytes, maintaining an extraction script, and shipping several megabytes to a phone. The app is mobile-first. A word is looked up once and cached forever, so the runtime cost is paid a single time per word, and capture still works offline because the Forms are optional.
 
 **Local-only storage with no backend.**
 Single user, no sharing requirement. A backend would add authentication, hosting and cost for no benefit. Sync can be added later if multi-device ever becomes a real need. The tradeoff is the eviction risk, addressed in section 6.
