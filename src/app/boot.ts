@@ -9,6 +9,7 @@
  * show the user a blank screen.
  */
 
+import { requestPersistentStorage } from '../backup/persistentStorage.ts'
 import { seedBuiltInPrompts } from '../data/index.ts'
 
 export async function boot(): Promise<void> {
@@ -17,7 +18,9 @@ export async function boot(): Promise<void> {
     // choices and never touches a Custom Prompt, so a revised set can ship later.
     seedBuiltInPrompts(),
 
-    // #23 adds requestPersistentStorage() here, from its own module.
+    // Ask the browser not to evict the database. Declined or unsupported is a
+    // normal outcome, not a failure: see `src/backup/persistentStorage.ts` (#23).
+    requestPersistentStorage(),
   ]).then(reportFailures)
 }
 
