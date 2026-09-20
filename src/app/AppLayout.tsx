@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router'
 import { Navigation } from './Navigation.tsx'
 import { AttributionFooter } from './Attribution.tsx'
+import { ExportReminderNotice } from '../backup/ExportReminderNotice.tsx'
 
 /**
  * The shell every screen renders inside.
@@ -25,6 +26,8 @@ export function AppLayout() {
       </a>
       <Navigation variant="rail" />
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+        {/* Renders nothing until a backup is overdue (#26). */}
+        <ExportReminderNotice />
         <main id="main-content" className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
           <Outlet />
         </main>
