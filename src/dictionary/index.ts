@@ -50,3 +50,8 @@ export type {
   NounSense,
   VerbSense,
 } from './lookup.ts'
+
+// The permanent cache (#19). `lookUpLemmaOnce` is what a screen should call:
+// it reaches the network once per Lemma and Part of Speech and never again.
+export { cacheLookup, lookUpLemmaOnce, readCachedLookup } from './cachedLookup.ts'
+export type { CacheableLookup, DictionaryCachePayload } from './cachedLookup.ts'
